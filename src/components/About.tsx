@@ -1,7 +1,9 @@
-import { Code, Database, Lightbulb, Zap } from "lucide-react";
+import { Code, Database, Lightbulb, Zap, Brain, Terminal } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import ParagraphTypewriter from "./ui/paragraph-typewriter";
+import TrueFocus from "./ui/true-focus";
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -28,23 +30,35 @@ const About = () => {
     {
       icon: Code,
       title: "Web Development",
-      description: "React, TypeScript, Node.js, Express",
+      description: "React, Node.js, Express.js, HTML, CSS",
+    },
+    {
+      icon: Lightbulb,
+      title: "Core",
+      description: "DSA, Operating System, Computer Network",
+    },
+    {
+      icon: Terminal,
+      title: "Programming Languages",
+      description: "C++, JavaScript, Python, Java",
     },
     {
       icon: Database,
       title: "Database",
-      description: "PostgreSQL, MongoDB, MySQL",
+      description: "MongoDB, MySQL",
+    },
+    
+    {
+      icon: Brain,
+      title: "AI Tools",
+      description: "GitHub Copilot, ChatGPT, Claude, Loveable, V0",
     },
     {
       icon: Zap,
       title: "Tools & Tech",
-      description: "Git, Docker, AWS, Firebase",
+      description: "Git, Github, Google Cloud, Firebase, Jupyter Notebook"
     },
-    {
-      icon: Lightbulb,
-      title: "Problem Solving",
-      description: "DSA, Algorithms, Competitive Programming",
-    },
+    
   ];
 
   return (
@@ -56,11 +70,19 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            About <span className="gradient-text">Me</span>
-          </h2>
+          <div className="mb-4">
+            <TrueFocus 
+              sentence="About Me"
+              manualMode={false}
+              blurAmount={2}
+              borderColor="hsl(var(--primary))"
+              glowColor="rgba(59, 130, 246, 0.6)"
+              animationDuration={0.6}
+              pauseBetweenAnimations={1.5}
+            />
+          </div>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            A passionate Computer Science student with a love for creating elegant solutions to complex problems
+          Computer Science student with a love for creating elegant solutions to complex problems
           </p>
         </motion.div>
 
@@ -72,10 +94,22 @@ const About = () => {
             className="space-y-6"
           >
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm currently pursuing my B.Tech in Computer Science Engineering, where I've developed a strong foundation in software development, data structures, and algorithms.
+              {isVisible && (
+                <ParagraphTypewriter 
+                  text="Hey, I'm Rohit Khandelwal. Thanks for your attention! I am a CSE student at Lovely Professional University, where I have been building a strong foundation in web development, artificial intelligence, data structures and algorithms."
+                  speed={50}
+                  delay={800}
+                />
+              )}
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              My journey in tech has been driven by curiosity and a desire to build impactful solutions. I enjoy working on full-stack projects and exploring new technologies.
+              {isVisible && (
+                <ParagraphTypewriter 
+                  text="My journey in tech has been driven by curiosity and a desire to build solutions that impact real-life problems. Mostly I have been on hackathons and coding competitions, which have honed my skills in problem-solving and teamwork."
+                  speed={50}
+                  delay={13700}
+                />
+              )}
             </p>
             <div className="space-y-2">
               <motion.div 
@@ -85,7 +119,7 @@ const About = () => {
                 className="flex items-center gap-2"
               >
                 <div className="w-2 h-2 bg-primary rounded-full" />
-                <span className="text-foreground">B.Tech CSE | 2021-2025</span>
+                <span className="text-foreground">B.Tech CSE | 2023-2027</span>
               </motion.div>
               <motion.div 
                 initial={{ opacity: 0, x: -20 }}
@@ -93,8 +127,7 @@ const About = () => {
                 transition={{ delay: 0.5 }}
                 className="flex items-center gap-2"
               >
-                <div className="w-2 h-2 bg-primary rounded-full" />
-                <span className="text-foreground">CGPA: 8.5/10</span>
+      
               </motion.div>
               <motion.div 
                 initial={{ opacity: 0, x: -20 }}
@@ -103,7 +136,7 @@ const About = () => {
                 className="flex items-center gap-2"
               >
                 <div className="w-2 h-2 bg-primary rounded-full" />
-                <span className="text-foreground">Location: India</span>
+                <span className="text-foreground">Location: Bharatpur, Rajasthan, India</span>
               </motion.div>
             </div>
           </motion.div>
@@ -112,57 +145,33 @@ const About = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="glass-card p-8 rounded-2xl"
+            className="flex justify-center"
           >
-            <h3 className="text-2xl font-bold mb-6">Technical Skills</h3>
-            <div className="space-y-4">
-              <div>
-                <div className="flex justify-between mb-2">
-                  <span className="text-sm font-medium">Frontend Development</span>
-                  <span className="text-sm text-muted-foreground">90%</span>
-                </div>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    animate={isVisible ? { width: "90%" } : {}}
-                    transition={{ duration: 1, delay: 0.5 }}
-                    className="h-full bg-gradient-to-r from-primary to-secondary" 
-                  />
-                </div>
-              </div>
-              <div>
-                <div className="flex justify-between mb-2">
-                  <span className="text-sm font-medium">Backend Development</span>
-                  <span className="text-sm text-muted-foreground">80%</span>
-                </div>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    animate={isVisible ? { width: "80%" } : {}}
-                    transition={{ duration: 1, delay: 0.7 }}
-                    className="h-full bg-gradient-to-r from-primary to-secondary" 
-                  />
-                </div>
-              </div>
-              <div>
-                <div className="flex justify-between mb-2">
-                  <span className="text-sm font-medium">Data Structures & Algorithms</span>
-                  <span className="text-sm text-muted-foreground">85%</span>
-                </div>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    animate={isVisible ? { width: "85%" } : {}}
-                    transition={{ duration: 1, delay: 0.9 }}
-                    className="h-full bg-gradient-to-r from-primary to-secondary" 
-                  />
-                </div>
-              </div>
+            <div className="relative">
+              <motion.div 
+                className="w-80 h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
+                <img 
+                  src="/WhatsApp Image 2025-01-26 at 22.22.44.jpeg" 
+                  alt="Rohit Khandelwal"
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+              {/* Decorative ring */}
+              <motion.div 
+                className="absolute -inset-2 rounded-full border-2 border-primary/30"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              />
+              {/* Glow effect */}
+              <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 blur-xl -z-10" />
             </div>
           </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skills.map((skill, index) => (
             <motion.div
               key={index}

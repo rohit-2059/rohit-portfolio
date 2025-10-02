@@ -39,9 +39,7 @@ const Navigation = () => {
   ];
 
   return (
-    <div className="fixed bottom-6 left-0 right-0 z-50 flex items-center justify-center">
-      <FloatingDock items={navLinks} />
-    </div>
+    <FloatingDock items={navLinks} orientation="vertical" />
   );
 };
 

@@ -15,14 +15,16 @@ export const FloatingDock = ({
   items,
   desktopClassName,
   mobileClassName,
+  orientation = "horizontal",
 }: {
   items: { title: string; icon: React.ReactNode; href: string }[];
   desktopClassName?: string;
   mobileClassName?: string;
+  orientation?: "horizontal" | "vertical";
 }) => {
   return (
     <>
-      <FloatingDockDesktop items={items} className={desktopClassName} />
+      <FloatingDockDesktop items={items} className={desktopClassName} orientation={orientation} />
       <FloatingDockMobile items={items} className={mobileClassName} />
     </>
   );
@@ -35,51 +37,21 @@ const FloatingDockMobile = ({
   items: { title: string; icon: React.ReactNode; href: string }[];
   className?: string;
 }) => {
-  const [open, setOpen] = useState(false);
   return (
-    <div className={cn("relative block md:hidden", className)}>
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            layoutId="nav"
-            className="absolute inset-x-0 bottom-full mb-2 flex flex-col gap-2"
-          >
-            {items.map((item, idx) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                exit={{
-                  opacity: 0,
-                  y: 10,
-                  transition: {
-                    delay: idx * 0.05,
-                  },
-                }}
-                transition={{ delay: (items.length - 1 - idx) * 0.05 }}
-              >
-                <a
-                  href={item.href}
-                  key={item.title}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-card border border-border"
-                  onClick={() => setOpen(false)}
-                >
-                  <div className="h-4 w-4">{item.icon}</div>
-                </a>
-              </motion.div>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <button
-        onClick={() => setOpen(!open)}
-        className="flex h-10 w-10 items-center justify-center rounded-full bg-card border border-border"
-      >
-        <IconLayoutNavbarCollapse className="h-5 w-5 text-muted-foreground" />
-      </button>
+    <div className={cn("block md:hidden", className)}>
+      <div className="fixed top-0 right-0 z-[100] flex items-center justify-end p-4">
+        <div className="flex items-center gap-3 rounded-2xl bg-slate-900/90 backdrop-blur-lg border border-slate-700/40 px-4 py-3 shadow-lg">
+          {items.map((item) => (
+            <a
+              key={item.title}
+              href={item.href}
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/80 text-slate-400 hover:bg-blue-600/40 hover:text-blue-300 transition-colors"
+            >
+              <div className="h-5 w-5">{item.icon}</div>
+            </a>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
@@ -87,22 +59,48 @@ const FloatingDockMobile = ({
 const FloatingDockDesktop = ({
   items,
   className,
+  orientation = "horizontal",
 }: {
   items: { title: string; icon: React.ReactNode; href: string }[];
   className?: string;
+  orientation?: "horizontal" | "vertical";
 }) => {
-  let mouseX = useMotionValue(Infinity);
+  const mouseX = useMotionValue(Infinity);
+  const mouseY = useMotionValue(Infinity);
+  
+  const isVertical = orientation === "vertical";
+  
   return (
     <motion.div
-      onMouseMove={(e) => mouseX.set(e.pageX)}
-      onMouseLeave={() => mouseX.set(Infinity)}
+      onMouseMove={(e) => {
+        if (isVertical) {
+          mouseY.set(e.clientY);
+        } else {
+          mouseX.set(e.clientX);
+        }
+      }}
+      onMouseLeave={() => {
+        if (isVertical) {
+          mouseY.set(Infinity);
+        } else {
+          mouseX.set(Infinity);
+        }
+      }}
       className={cn(
-        "mx-auto hidden h-16 items-end gap-4 rounded-2xl bg-card/80 backdrop-blur-lg border border-border px-4 pb-3 md:flex shadow-lg",
+        isVertical 
+          ? "fixed top-1/2 right-5 -translate-y-1/2 z-[100] w-16 flex-col items-center gap-4 rounded-2xl bg-slate-900/90 backdrop-blur-lg border border-slate-700/40 py-4 px-3 hidden md:flex shadow-lg"
+          : "mx-auto hidden h-16 items-end gap-4 rounded-2xl bg-slate-900/90 backdrop-blur-lg border border-slate-700/40 px-4 pb-3 md:flex shadow-lg",
         className,
       )}
     >
       {items.map((item) => (
-        <IconContainer mouseX={mouseX} key={item.title} {...item} />
+        <IconContainer 
+          mouseX={mouseX} 
+          mouseY={mouseY}
+          orientation={orientation}
+          key={item.title} 
+          {...item} 
+        />
       ))}
     </motion.div>
   );
@@ -110,50 +108,56 @@ const FloatingDockDesktop = ({
 
 function IconContainer({
   mouseX,
+  mouseY,
   title,
   icon,
   href,
+  orientation = "horizontal",
 }: {
   mouseX: MotionValue;
+  mouseY: MotionValue;
   title: string;
   icon: React.ReactNode;
   href: string;
+  orientation?: "horizontal" | "vertical";
 }) {
-  let ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
+  const isVertical = orientation === "vertical";
 
-  let distance = useTransform(mouseX, (val) => {
-    let bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
-
-    return val - bounds.x - bounds.width / 2;
+  const distance = useTransform(isVertical ? mouseY : mouseX, (val) => {
+    const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, y: 0, width: 0, height: 0 };
+    return isVertical 
+      ? val - bounds.y - bounds.height / 2
+      : val - bounds.x - bounds.width / 2;
   });
 
-  let widthTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
-  let heightTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
+  const widthTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
+  const heightTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
 
-  let widthTransformIcon = useTransform(distance, [-150, 0, 150], [20, 40, 20]);
-  let heightTransformIcon = useTransform(
+  const widthTransformIcon = useTransform(distance, [-150, 0, 150], [20, 40, 20]);
+  const heightTransformIcon = useTransform(
     distance,
     [-150, 0, 150],
     [20, 40, 20],
   );
 
-  let width = useSpring(widthTransform, {
+  const width = useSpring(widthTransform, {
     mass: 0.1,
     stiffness: 150,
     damping: 12,
   });
-  let height = useSpring(heightTransform, {
+  const height = useSpring(heightTransform, {
     mass: 0.1,
     stiffness: 150,
     damping: 12,
   });
 
-  let widthIcon = useSpring(widthTransformIcon, {
+  const widthIcon = useSpring(widthTransformIcon, {
     mass: 0.1,
     stiffness: 150,
     damping: 12,
   });
-  let heightIcon = useSpring(heightTransformIcon, {
+  const heightIcon = useSpring(heightTransformIcon, {
     mass: 0.1,
     stiffness: 150,
     damping: 12,
@@ -168,15 +172,32 @@ function IconContainer({
         style={{ width, height }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="relative flex aspect-square items-center justify-center rounded-full bg-muted hover:bg-primary/20 transition-colors"
+        className="relative flex aspect-square items-center justify-center rounded-full bg-slate-800/80 text-slate-400 hover:bg-blue-600/40 hover:text-blue-300 transition-colors"
       >
         <AnimatePresence>
           {hovered && (
             <motion.div
-              initial={{ opacity: 0, y: 10, x: "-50%" }}
-              animate={{ opacity: 1, y: 0, x: "-50%" }}
-              exit={{ opacity: 0, y: 2, x: "-50%" }}
-              className="absolute -top-8 left-1/2 w-fit rounded-md border border-border bg-card px-2 py-0.5 text-xs whitespace-pre text-foreground"
+              initial={{ 
+                opacity: 0, 
+                y: isVertical ? 0 : 10, 
+                x: isVertical ? 10 : "-50%" 
+              }}
+              animate={{ 
+                opacity: 1, 
+                y: isVertical ? 0 : 0, 
+                x: isVertical ? 0 : "-50%" 
+              }}
+              exit={{ 
+                opacity: 0, 
+                y: isVertical ? 0 : 2, 
+                x: isVertical ? 2 : "-50%" 
+              }}
+              className={cn(
+                "absolute w-fit rounded-md border border-slate-700/50 bg-slate-900/95 backdrop-blur-sm px-2 py-0.5 text-xs whitespace-pre text-slate-300",
+                isVertical 
+                  ? "-left-16 top-1/2 -translate-y-1/2" 
+                  : "-top-8 left-1/2"
+              )}
             >
               {title}
             </motion.div>
