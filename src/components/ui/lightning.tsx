@@ -229,15 +229,13 @@ const Lightning: React.FC<LightningProps> = ({ hue = 230, xOffset = 0, speed = 1
   return (
     <canvas 
       ref={canvasRef} 
-      className="fixed inset-0 w-screen h-screen touch-none pointer-events-none"
+      className="absolute inset-0 w-full h-full touch-none pointer-events-none"
       style={{
         display: 'block',
         userSelect: 'none',
         WebkitUserSelect: 'none',
         WebkitTouchCallout: 'none',
-        WebkitTapHighlightColor: 'transparent',
-        backgroundColor: '#000000',
-        zIndex: -1
+        WebkitTapHighlightColor: 'transparent'
       }}
     />
   );

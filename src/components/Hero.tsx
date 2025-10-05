@@ -9,7 +9,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden py-12 sm:py-16 md:py-20 pt-20 sm:pt-24 md:pt-32 bg-black"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden py-12 sm:py-16 md:py-20 pt-16 sm:pt-24 md:pt-32"
     >
       {/* Desktop Only - TargetCursor */}
       <div className="hidden sm:block">

@@ -9,11 +9,13 @@ import Header from "@/components/Header";
 const Index = () => {
   return (
     <SmoothScroll>
-      <div className="relative min-h-screen bg-black">
-        {/* Lightning Background - Fixed and covers entire viewport */}
-        <div className="fixed inset-0 z-0 w-full h-full bg-black">
-          {/* Desktop Lightning */}
-          <div className="hidden sm:block w-full h-full">
+      <div className="relative min-h-screen">
+        {/* Black Background - Behind everything */}
+        <div className="fixed inset-0 bg-black w-full h-full min-h-screen" style={{ zIndex: -20 }}></div>
+        
+        {/* Lightning Effect - Desktop Only */}
+        <div className="hidden sm:block fixed inset-0 w-full h-full overflow-hidden pointer-events-none" style={{ zIndex: 1 }}>
+          <div className="w-full h-full min-h-screen">
             <Lightning 
               hue={219} 
               xOffset={2} 
@@ -22,23 +24,13 @@ const Index = () => {
               size={0.9} 
             />
           </div>
-          {/* Mobile Lightning */}
-          <div className="block sm:hidden w-full h-full">
-            <Lightning 
-              hue={219} 
-              xOffset={-1.5} 
-              speed={0.7} 
-              intensity={1.0} 
-              size={1.0} 
-            />
-          </div>
         </div>
         
         {/* Header - Fixed at top */}
         <Header />
         
         {/* Content Layer */}
-        <div className="relative z-10 bg-black min-h-screen">
+        <div className="relative bg-transparent min-h-screen" style={{ zIndex: 10 }}>
           <Hero />
           <About />
           <Projects />

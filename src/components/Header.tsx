@@ -80,8 +80,8 @@ const Header = () => {
   // Build responsive header classes:
   // Mobile: always floating, constant width & position
   // Desktop: expands when at top or scrolling up, compacts when scrolling down beyond threshold
-  const baseClasses = `fixed left-1/2 -translate-x-1/2 top-4 sm:top-0 z-50 flex items-center justify-between
-    bg-background/80 backdrop-blur-lg border border-border/20 rounded-xl sm:rounded-2xl
+  const baseClasses = `fixed left-1/2 -translate-x-1/2 top-6 sm:top-4 z-50 flex items-center justify-between
+    bg-background/80 backdrop-blur-lg border border-primary/20 hover:border-primary/30 rounded-2xl sm:rounded-3xl
     h-12 xs:h-14 sm:h-16 px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-4 transition-all duration-500 ease-in-out`;
 
   let widthClasses = '';
