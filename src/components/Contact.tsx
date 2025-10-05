@@ -121,7 +121,7 @@ const Contact = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="contact" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 mb-12 sm:mb-16 md:mb-20">
+    <section ref={sectionRef} id="contact" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 mb-12 sm:mb-16 md:mb-20 bg-black">
       <div className="max-w-7xl mx-auto">
         {/* Desktop Only - TargetCursor */}
         <div className="hidden sm:block">

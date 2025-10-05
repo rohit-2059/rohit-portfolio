@@ -9,9 +9,9 @@ import Header from "@/components/Header";
 const Index = () => {
   return (
     <SmoothScroll>
-      <div className="relative">
+      <div className="relative min-h-screen bg-black">
         {/* Lightning Background - Fixed and covers entire viewport */}
-        <div className="fixed inset-0 z-0 bg-black">
+        <div className="fixed inset-0 z-0 w-full h-full bg-black">
           {/* Desktop Lightning */}
           <div className="hidden sm:block w-full h-full">
             <Lightning 
@@ -38,7 +38,7 @@ const Index = () => {
         <Header />
         
         {/* Content Layer */}
-        <div className="relative z-10">
+        <div className="relative z-10 bg-black min-h-screen">
           <Hero />
           <About />
           <Projects />
