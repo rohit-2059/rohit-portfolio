@@ -7,15 +7,17 @@ Your portfolio is ready to deploy on Vercel with built-in email functionality!
 ### **Setup Steps:**
 
 1. **Deploy to Vercel:**
+
    ```bash
    # Install Vercel CLI (if not already installed)
    npm i -g vercel
-   
+
    # Deploy your project
    vercel
    ```
 
 2. **Add Environment Variables in Vercel:**
+
    - Go to your Vercel dashboard
    - Select your project
    - Go to **Settings > Environment Variables**
@@ -30,6 +32,7 @@ Your portfolio is ready to deploy on Vercel with built-in email functionality!
    - No changes needed in your frontend code!
 
 ### **How it Works:**
+
 - ✅ **Frontend**: Hosted on Vercel's CDN
 - ✅ **Backend**: Serverless function in `/api/send-email.js`
 - ✅ **Email**: Sent directly through Gmail using Nodemailer
@@ -40,14 +43,17 @@ Your portfolio is ready to deploy on Vercel with built-in email functionality!
 ## 🌐 **Option 2: Other Hosting Platforms**
 
 ### **Railway (Easy):**
+
 - Deploy backend to Railway
 - Update frontend API URL to Railway backend URL
 
 ### **Render (Free Tier):**
+
 - Deploy Express server to Render
 - Update frontend to call Render backend URL
 
-### **Heroku:**  
+### **Heroku:**
+
 - Deploy Express server to Heroku
 - Update frontend to call Heroku backend URL
 
@@ -56,12 +62,14 @@ Your portfolio is ready to deploy on Vercel with built-in email functionality!
 ## 📝 **For Vercel Deployment:**
 
 1. **Advantages:**
+
    - ✅ Everything in one place
    - ✅ No separate backend hosting needed
    - ✅ Serverless = automatic scaling
    - ✅ Fast global CDN
 
 2. **Files Created:**
+
    - ✅ `/api/send-email.js` - Vercel serverless function
    - ✅ `.env.example` - Environment variables template
 
@@ -74,6 +82,7 @@ Your portfolio is ready to deploy on Vercel with built-in email functionality!
 ## 🔧 **Testing Before Deployment:**
 
 You can test the Vercel function locally:
+
 ```bash
 # Install Vercel CLI
 npm i -g vercel

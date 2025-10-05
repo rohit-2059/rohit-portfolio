@@ -23,15 +23,15 @@ A flexible, customizable header component that you can use across different proj
 ## 🎯 Basic Usage
 
 ```tsx
-import ReusableHeader from './components/ReusableHeader';
-import { Download, Home, User, Briefcase, Mail } from 'lucide-react';
+import ReusableHeader from "./components/ReusableHeader";
+import { Download, Home, User, Briefcase, Mail } from "lucide-react";
 
 const App = () => {
   const navigationItems = [
-    { id: 'home', label: 'Home', href: '#home' },
-    { id: 'about', label: 'About', href: '#about' },
-    { id: 'services', label: 'Services', href: '#services' },
-    { id: 'contact', label: 'Contact', href: '#contact' }
+    { id: "home", label: "Home", href: "#home" },
+    { id: "about", label: "About", href: "#about" },
+    { id: "services", label: "Services", href: "#services" },
+    { id: "contact", label: "Contact", href: "#contact" },
   ];
 
   return (
@@ -43,7 +43,7 @@ const App = () => {
           label: "Download CV",
           href: "/cv.pdf",
           icon: <Download className="h-4 w-4" />,
-          download: "MyCV.pdf"
+          download: "MyCV.pdf",
         }}
       />
       {/* Your page content */}
@@ -59,12 +59,12 @@ const App = () => {
 ```tsx
 interface ReusableHeaderProps {
   // Brand/Logo
-  brandText?: string;              // Default: "BRAND"
-  brandHref?: string;              // Default: "#"
-  
+  brandText?: string; // Default: "BRAND"
+  brandHref?: string; // Default: "#"
+
   // Navigation (Required)
   navigationItems: NavigationItem[];
-  
+
   // Optional action button
   actionButton?: {
     label: string;
@@ -84,7 +84,7 @@ interface ReusableHeaderProps {
   brandClassName?: string;
   navClassName?: string;
   actionButtonClassName?: string;
-  
+
   // Color customization (Tailwind classes)
   primaryColor?: string;           // Default: "bg-blue-500"
   backgroundColor?: string;        // Default: "bg-background/80"
@@ -100,7 +100,7 @@ interface ReusableHeaderProps {
   // Scroll detection
   enableScrollDetection?: boolean;  // Default: true
   scrollOffset?: number;           // Default: 100
-  
+
   // Scroll hide/show
   enableScrollHide?: boolean;      // Default: true
 }
@@ -109,6 +109,7 @@ interface ReusableHeaderProps {
 ## 🎨 Customization Examples
 
 ### Different Brand Styles
+
 ```tsx
 <ReusableHeader
   brandText="🚀 MyApp"
@@ -118,6 +119,7 @@ interface ReusableHeaderProps {
 ```
 
 ### Custom Colors
+
 ```tsx
 <ReusableHeader
   navigationItems={navItems}
@@ -129,6 +131,7 @@ interface ReusableHeaderProps {
 ```
 
 ### Disable Scroll Features
+
 ```tsx
 <ReusableHeader
   navigationItems={navItems}
@@ -138,13 +141,14 @@ interface ReusableHeaderProps {
 ```
 
 ### With Action Button
+
 ```tsx
 <ReusableHeader
   navigationItems={navItems}
   actionButton={{
     label: "Get Started",
     href: "/signup",
-    icon: <ArrowRight className="h-4 w-4" />
+    icon: <ArrowRight className="h-4 w-4" />,
   }}
 />
 ```
@@ -153,10 +157,10 @@ interface ReusableHeaderProps {
 
 ```tsx
 const navigationItems = [
-  { 
-    id: 'section-id',      // Must match HTML section id
-    label: 'Display Name', // Text shown in navigation
-    href: '#section-id'    // Link target
+  {
+    id: "section-id", // Must match HTML section id
+    label: "Display Name", // Text shown in navigation
+    href: "#section-id", // Link target
   },
   // ... more items
 ];
@@ -176,12 +180,13 @@ For scroll detection to work, your sections need matching IDs:
 ## 🎯 Advanced Examples
 
 ### Portfolio Header
+
 ```tsx
 const portfolioNav = [
-  { id: 'hero', label: 'Home', href: '#hero' },
-  { id: 'about', label: 'About', href: '#about' },
-  { id: 'portfolio', label: 'Portfolio', href: '#portfolio' },
-  { id: 'contact', label: 'Contact', href: '#contact' }
+  { id: "hero", label: "Home", href: "#hero" },
+  { id: "about", label: "About", href: "#about" },
+  { id: "portfolio", label: "Portfolio", href: "#portfolio" },
+  { id: "contact", label: "Contact", href: "#contact" },
 ];
 
 <ReusableHeader
@@ -192,19 +197,20 @@ const portfolioNav = [
     label: "Resume",
     href: "/resume.pdf",
     icon: <Download className="h-4 w-4" />,
-    download: "JohnDoe_Resume.pdf"
+    download: "JohnDoe_Resume.pdf",
   }}
-/>
+/>;
 ```
 
 ### Business Website Header
+
 ```tsx
 const businessNav = [
-  { id: 'home', label: 'Home', href: '#home' },
-  { id: 'services', label: 'Services', href: '#services' },
-  { id: 'about', label: 'About Us', href: '#about' },
-  { id: 'testimonials', label: 'Reviews', href: '#testimonials' },
-  { id: 'contact', label: 'Contact', href: '#contact' }
+  { id: "home", label: "Home", href: "#home" },
+  { id: "services", label: "Services", href: "#services" },
+  { id: "about", label: "About Us", href: "#about" },
+  { id: "testimonials", label: "Reviews", href: "#testimonials" },
+  { id: "contact", label: "Contact", href: "#contact" },
 ];
 
 <ReusableHeader
@@ -217,9 +223,9 @@ const businessNav = [
   actionButton={{
     label: "Get Quote",
     href: "/quote",
-    icon: <Mail className="h-4 w-4" />
+    icon: <Mail className="h-4 w-4" />,
   }}
-/>
+/>;
 ```
 
 ## 🚀 Pro Tips
