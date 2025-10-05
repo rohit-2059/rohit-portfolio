@@ -64,13 +64,13 @@ const Projects = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="projects" className="py-20 px-6">
+    <section ref={sectionRef} id="projects" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-12 md:mb-16"
         >
           <div className="mb-4">
             <TrueFocus 
@@ -82,13 +82,17 @@ const Projects = () => {
               pauseBetweenAnimations={1.8}
             />
           </div>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto px-4">
             Here are some of my recent projects that showcase my skills and passion for development
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+        {/* Desktop Only - TargetCursor */}
+        <div className="hidden sm:block">
           <TargetCursor targetSelector=".cursor-target" />
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-10 md:mb-12">
           {featuredProjects.map((project, index) => (
             <motion.div
               key={index}
@@ -113,20 +117,20 @@ const Projects = () => {
                   />
                 </motion.div>
                 
-                <CardHeader className="pb-4">
+                <CardHeader className="pb-3 sm:pb-4">
                   <motion.h3 
-                    className="text-2xl font-bold group-hover:text-primary transition-all duration-300 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text"
+                    className="text-xl sm:text-2xl font-bold group-hover:text-primary transition-all duration-300 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text"
                     whileHover={{ scale: 1.02 }}
                   >
                     {project.title}
                   </motion.h3>
                 </CardHeader>
 
-                <CardContent className="pb-6">
-                  <p className="text-muted-foreground mb-6 leading-relaxed text-sm">
+                <CardContent className="pb-4 sm:pb-6">
+                  <p className="text-muted-foreground mb-4 sm:mb-6 leading-relaxed text-xs sm:text-sm">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {project.tags.map((tag, tagIndex) => (
                       <motion.div
                         key={tagIndex}
@@ -137,7 +141,7 @@ const Projects = () => {
                       >
                         <Badge
                           variant="secondary"
-                          className="bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30 hover:border-primary/50 transition-all duration-300 font-medium px-3 py-1 text-xs backdrop-blur-sm"
+                          className="bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30 hover:border-primary/50 transition-all duration-300 font-medium px-2 sm:px-3 py-0.5 sm:py-1 text-xs backdrop-blur-sm"
                         >
                           {tag}
                         </Badge>
@@ -146,36 +150,36 @@ const Projects = () => {
                   </div>
                 </CardContent>
 
-                <CardFooter className="gap-4 pt-2">
+                <CardFooter className="gap-2 sm:gap-4 pt-2 flex-col sm:flex-row">
                   <Button
                     asChild
                     variant="outline"
                     size="sm"
-                    className="cursor-target group/btn relative overflow-hidden hover:scale-105 transition-all duration-300 border-primary/30 hover:border-primary hover:bg-primary/5 hover:shadow-lg hover:shadow-primary/20 backdrop-blur-sm font-medium before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-primary/10 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
+                    className="cursor-target group/btn relative overflow-hidden hover:scale-105 transition-all duration-300 border-primary/30 hover:border-primary hover:bg-primary/5 hover:shadow-lg hover:shadow-primary/20 backdrop-blur-sm font-medium before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-primary/10 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 w-full sm:w-auto"
                   >
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="relative z-10 flex items-center"
+                      className="relative z-10 flex items-center justify-center"
                     >
-                      <Github className="mr-2 h-4 w-4 transition-all duration-300 group-hover/btn:scale-110 group-hover/btn:rotate-12" />
-                      <span className="group-hover/btn:text-primary transition-colors duration-300">Code</span>
+                      <Github className="mr-2 h-3 w-3 sm:h-4 sm:w-4 transition-all duration-300 group-hover/btn:scale-110 group-hover/btn:rotate-12" />
+                      <span className="group-hover/btn:text-primary transition-colors duration-300 text-sm">Code</span>
                     </a>
                   </Button>
                   <Button
                     asChild
                     size="sm"
-                    className="cursor-target group/btn relative overflow-hidden bg-gradient-to-r from-primary via-primary to-secondary hover:from-primary hover:via-blue-500 hover:to-secondary hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary/30 font-medium before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
+                    className="cursor-target group/btn relative overflow-hidden bg-gradient-to-r from-primary via-primary to-secondary hover:from-primary hover:via-blue-500 hover:to-secondary hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary/30 font-medium before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 w-full sm:w-auto"
                   >
                     <a
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="relative z-10 flex items-center"
+                      className="relative z-10 flex items-center justify-center"
                     >
-                      <ExternalLink className="mr-2 h-4 w-4 transition-all duration-300 group-hover/btn:scale-110 group-hover/btn:-rotate-12" />
-                      <span className="group-hover/btn:text-white transition-colors duration-300">Live Demo</span>
+                      <ExternalLink className="mr-2 h-3 w-3 sm:h-4 sm:w-4 transition-all duration-300 group-hover/btn:scale-110 group-hover/btn:-rotate-12" />
+                      <span className="group-hover/btn:text-white transition-colors duration-300 text-sm">Live Demo</span>
                     </a>
                   </Button>
                 </CardFooter>
@@ -194,11 +198,11 @@ const Projects = () => {
           <Button
             asChild
             size="lg"
-            className="cursor-target group/btn relative overflow-hidden bg-gradient-to-r from-primary via-blue-500 to-secondary hover:from-primary hover:via-purple-500 hover:to-secondary hover:scale-110 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-primary/40 font-semibold px-10 py-4 text-base border border-primary/20 hover:border-primary/40 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-1000"
+            className="cursor-target group/btn relative overflow-hidden bg-gradient-to-r from-primary via-blue-500 to-secondary hover:from-primary hover:via-purple-500 hover:to-secondary hover:scale-110 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-primary/40 font-semibold px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base border border-primary/20 hover:border-primary/40 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-1000 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto"
           >
-            <Link to="/projects" className="relative z-10 flex items-center">
+            <Link to="/projects" className="relative z-10 flex items-center justify-center">
               <span className="group-hover/btn:text-white transition-colors duration-300">View All Projects</span>
-              <ArrowRight className="ml-3 h-5 w-5 transition-all duration-300 group-hover/btn:translate-x-2 group-hover/btn:scale-110" />
+              <ArrowRight className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 transition-all duration-300 group-hover/btn:translate-x-2 group-hover/btn:scale-110" />
             </Link>
           </Button>
         </motion.div>

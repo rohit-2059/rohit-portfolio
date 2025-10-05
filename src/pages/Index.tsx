@@ -11,14 +11,27 @@ const Index = () => {
     <SmoothScroll>
       <div className="relative">
         {/* Lightning Background - Fixed and covers entire viewport */}
-        <div className="fixed inset-0 z-0 will-change-auto">
-          <Lightning 
-            hue={219} 
-            xOffset={2} 
-            speed={1} 
-            intensity={1} 
-            size={0.9} 
-          />
+        <div className="fixed inset-0 z-0 bg-black">
+          {/* Desktop Lightning */}
+          <div className="hidden sm:block w-full h-full">
+            <Lightning 
+              hue={219} 
+              xOffset={2} 
+              speed={1} 
+              intensity={1} 
+              size={0.9} 
+            />
+          </div>
+          {/* Mobile Lightning */}
+          <div className="block sm:hidden w-full h-full">
+            <Lightning 
+              hue={219} 
+              xOffset={-1.5} 
+              speed={0.7} 
+              intensity={1.0} 
+              size={1.0} 
+            />
+          </div>
         </div>
         
         {/* Header - Fixed at top */}

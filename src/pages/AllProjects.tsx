@@ -14,6 +14,9 @@ const AllProjects = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+    
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -134,34 +137,47 @@ const AllProjects = () => {
   return (
     <div className="relative min-h-screen bg-background">
       {/* Lightning Background - Fixed and covers entire viewport */}
-      <div className="fixed inset-0 z-0 will-change-auto">
-        <Lightning 
-          hue={219} 
-          xOffset={2} 
-          speed={1} 
-          intensity={1} 
-          size={0.9} 
-        />
+      <div className="fixed inset-0 z-0 bg-black">
+        {/* Desktop Lightning */}
+        <div className="hidden sm:block w-full h-full">
+          <Lightning 
+            hue={219} 
+            xOffset={2} 
+            speed={1} 
+            intensity={1} 
+            size={0.9} 
+          />
+        </div>
+        {/* Mobile Lightning */}
+        <div className="block sm:hidden w-full h-full">
+          <Lightning 
+            hue={219} 
+            xOffset={-1.5} 
+            speed={0.7} 
+            intensity={1.0} 
+            size={1.0} 
+          />
+        </div>
       </div>
       
       {/* Content Layer */}
       <div className="relative z-10">
-        <section ref={sectionRef} className="py-20 px-6">
+        <section ref={sectionRef} className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           {/* Back Button */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-8"
+            className="mb-6 sm:mb-8"
           >
             <Button
               asChild
               variant="outline"
-              className="cursor-target group/btn relative overflow-hidden hover:border-primary hover:bg-primary/5 hover:shadow-lg hover:shadow-primary/20 hover:scale-105 transition-all duration-300 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-primary/10 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
+              className="cursor-target group/btn relative overflow-hidden hover:border-primary hover:bg-primary/5 hover:shadow-lg hover:shadow-primary/20 hover:scale-105 transition-all duration-300 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-primary/10 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 text-sm sm:text-base"
             >
               <Link to="/" className="relative z-10 flex items-center">
-                <ArrowLeft className="mr-2 h-4 w-4 group-hover/btn:scale-110 group-hover/btn:-translate-x-1 transition-all duration-300" />
+                <ArrowLeft className="mr-2 h-3 w-3 sm:h-4 sm:w-4 group-hover/btn:scale-110 group-hover/btn:-translate-x-1 transition-all duration-300" />
                 <span className="group-hover/btn:text-primary transition-colors duration-300">Back to Home</span>
               </Link>
             </Button>
@@ -172,7 +188,7 @@ const AllProjects = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-10 sm:mb-12 md:mb-16"
           >
             <div className="mb-4">
               <TrueFocus 
@@ -184,14 +200,18 @@ const AllProjects = () => {
                 pauseBetweenAnimations={1.8}
               />
             </div>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto px-4">
               Explore my complete portfolio of projects showcasing various technologies and solutions
             </p>
           </motion.div>
 
           {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Desktop Only - TargetCursor */}
+          <div className="hidden sm:block">
             <TargetCursor targetSelector=".cursor-target" />
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {allProjects.map((project, index) => (
               <motion.div
                 key={index}
@@ -216,20 +236,20 @@ const AllProjects = () => {
                     />
                   </motion.div>
                   
-                  <CardHeader className="pb-4">
+                  <CardHeader className="pb-3 sm:pb-4">
                     <motion.h3 
-                      className="text-xl font-bold group-hover:text-primary transition-all duration-300 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text"
+                      className="text-lg sm:text-xl font-bold group-hover:text-primary transition-all duration-300 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text line-clamp-2"
                       whileHover={{ scale: 1.02 }}
                     >
                       {project.title}
                     </motion.h3>
                   </CardHeader>
 
-                  <CardContent className="pb-6">
-                    <p className="text-muted-foreground mb-6 leading-relaxed text-sm">
+                  <CardContent className="pb-4 sm:pb-6">
+                    <p className="text-muted-foreground mb-4 sm:mb-6 leading-relaxed text-xs sm:text-sm line-clamp-4">
                       {project.description}
                     </p>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
                       {project.tags.map((tag, tagIndex) => (
                         <motion.div
                           key={tagIndex}
@@ -240,7 +260,7 @@ const AllProjects = () => {
                         >
                           <Badge
                             variant="secondary"
-                            className="bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30 hover:border-primary/50 transition-all duration-300 font-medium px-2 py-1 text-xs backdrop-blur-sm"
+                            className="bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30 hover:border-primary/50 transition-all duration-300 font-medium px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs backdrop-blur-sm"
                           >
                             {tag}
                           </Badge>
@@ -249,12 +269,12 @@ const AllProjects = () => {
                     </div>
                   </CardContent>
 
-                  <CardFooter className="gap-3 pt-2">
+                  <CardFooter className="gap-2 sm:gap-3 pt-2 flex-col sm:flex-row">
                     <Button
                       asChild
                       variant="outline"
                       size="sm"
-                      className="cursor-target group/btn relative overflow-hidden hover:scale-105 transition-all duration-300 border-primary/30 hover:border-primary hover:bg-primary/5 hover:shadow-lg hover:shadow-primary/20 backdrop-blur-sm font-medium flex-1 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-primary/10 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
+                      className="cursor-target group/btn relative overflow-hidden hover:scale-105 transition-all duration-300 border-primary/30 hover:border-primary hover:bg-primary/5 hover:shadow-lg hover:shadow-primary/20 backdrop-blur-sm font-medium w-full sm:flex-1 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-primary/10 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
                     >
                       <a
                         href={project.github}
@@ -262,14 +282,14 @@ const AllProjects = () => {
                         rel="noopener noreferrer"
                         className="relative z-10 flex items-center justify-center"
                       >
-                        <Github className="mr-2 h-4 w-4 transition-all duration-300 group-hover/btn:scale-110 group-hover/btn:rotate-12" />
-                        <span className="group-hover/btn:text-primary transition-colors duration-300">Code</span>
+                        <Github className="mr-2 h-3 w-3 sm:h-4 sm:w-4 transition-all duration-300 group-hover/btn:scale-110 group-hover/btn:rotate-12" />
+                        <span className="group-hover/btn:text-primary transition-colors duration-300 text-sm">Code</span>
                       </a>
                     </Button>
                     <Button
                       asChild
                       size="sm"
-                      className="cursor-target group/btn relative overflow-hidden bg-gradient-to-r from-primary via-primary to-secondary hover:from-primary hover:via-blue-500 hover:to-secondary hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary/30 font-medium flex-1 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
+                      className="cursor-target group/btn relative overflow-hidden bg-gradient-to-r from-primary via-primary to-secondary hover:from-primary hover:via-blue-500 hover:to-secondary hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary/30 font-medium w-full sm:flex-1 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
                     >
                       <a
                         href={project.live}
@@ -277,8 +297,8 @@ const AllProjects = () => {
                         rel="noopener noreferrer"
                         className="relative z-10 flex items-center justify-center"
                       >
-                        <ExternalLink className="mr-2 h-4 w-4 transition-all duration-300 group-hover/btn:scale-110 group-hover/btn:-rotate-12" />
-                        <span className="group-hover/btn:text-white transition-colors duration-300">Live</span>
+                        <ExternalLink className="mr-2 h-3 w-3 sm:h-4 sm:w-4 transition-all duration-300 group-hover/btn:scale-110 group-hover/btn:-rotate-12" />
+                        <span className="group-hover/btn:text-white transition-colors duration-300 text-sm">Live</span>
                       </a>
                     </Button>
                   </CardFooter>

@@ -17,11 +17,13 @@ const Lightning: React.FC<LightningProps> = ({ hue = 230, xOffset = 0, speed = 1
 
     const resizeCanvas = () => {
       const dpr = window.devicePixelRatio || 1;
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
-      canvas.style.width = rect.width + 'px';
-      canvas.style.height = rect.height + 'px';
+      // Use full viewport dimensions instead of getBoundingClientRect
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
     };
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
@@ -227,13 +229,15 @@ const Lightning: React.FC<LightningProps> = ({ hue = 230, xOffset = 0, speed = 1
   return (
     <canvas 
       ref={canvasRef} 
-      className="w-full h-full relative touch-none pointer-events-none"
+      className="fixed inset-0 w-screen h-screen touch-none pointer-events-none"
       style={{
         display: 'block',
         userSelect: 'none',
         WebkitUserSelect: 'none',
         WebkitTouchCallout: 'none',
-        WebkitTapHighlightColor: 'transparent'
+        WebkitTapHighlightColor: 'transparent',
+        backgroundColor: '#000000',
+        zIndex: -1
       }}
     />
   );

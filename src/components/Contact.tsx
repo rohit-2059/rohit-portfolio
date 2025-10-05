@@ -121,43 +121,47 @@ const Contact = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="contact" className="py-20 px-6 mb-20">
+    <section ref={sectionRef} id="contact" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 mb-12 sm:mb-16 md:mb-20">
       <div className="max-w-7xl mx-auto">
-        <TargetCursor targetSelector=".cursor-target" />
+        {/* Desktop Only - TargetCursor */}
+        <div className="hidden sm:block">
+          <TargetCursor targetSelector=".cursor-target" />
+        </div>
+        
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <div className="flex items-center gap-2 mb-8">
+          <div className="flex items-center gap-2 mb-6 sm:mb-8">
             <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-            <span className="text-primary text-sm font-medium uppercase tracking-wider">
+            <span className="text-primary text-xs sm:text-sm font-medium uppercase tracking-wider">
               CONNECT WITH ME
             </span>
           </div>
           
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-start">
             {/* Left Column - Form */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={isVisible ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <h2 className="text-5xl md:text-6xl font-bold text-white mb-8 leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 sm:mb-8 leading-tight">
                 Let's start a project
-                <br />
-                together
+                <br className="hidden sm:block" />
+                <span className="sm:hidden"> </span>together
               </h2>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 <motion.div 
                   className="space-y-2"
                   initial={{ opacity: 0, y: 20 }}
                   animate={isVisible ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.4 }}
                 >
-                  <label htmlFor="fullname" className="text-white font-medium">
+                  <label htmlFor="fullname" className="text-white font-medium text-sm sm:text-base">
                     Full Name
                   </label>
                   <Input
@@ -166,7 +170,7 @@ const Contact = () => {
                     value={formData.fullname}
                     onChange={handleInputChange}
                     placeholder=""
-                    className="bg-transparent border-gray-700 border-b-2 border-t-0 border-l-0 border-r-0 rounded-none px-0 text-white placeholder:text-gray-500 focus:border-primary focus:ring-0 h-12"
+                    className="bg-transparent border-gray-700 border-b-2 border-t-0 border-l-0 border-r-0 rounded-none px-0 text-white placeholder:text-gray-500 focus:border-primary focus:ring-0 h-10 sm:h-12 text-sm sm:text-base"
                     required
                   />
                 </motion.div>
@@ -177,7 +181,7 @@ const Contact = () => {
                   animate={isVisible ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.5 }}
                 >
-                  <label htmlFor="email" className="text-white font-medium">
+                  <label htmlFor="email" className="text-white font-medium text-sm sm:text-base">
                     Email
                   </label>
                   <Input
@@ -187,7 +191,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder=""
-                    className="bg-transparent border-gray-700 border-b-2 border-t-0 border-l-0 border-r-0 rounded-none px-0 text-white placeholder:text-gray-500 focus:border-primary focus:ring-0 h-12"
+                    className="bg-transparent border-gray-700 border-b-2 border-t-0 border-l-0 border-r-0 rounded-none px-0 text-white placeholder:text-gray-500 focus:border-primary focus:ring-0 h-10 sm:h-12 text-sm sm:text-base"
                     required
                   />
                 </motion.div>
@@ -198,7 +202,7 @@ const Contact = () => {
                   animate={isVisible ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.6 }}
                 >
-                  <label htmlFor="message" className="text-white font-medium">
+                  <label htmlFor="message" className="text-white font-medium text-sm sm:text-base">
                     Message
                   </label>
                   <Textarea
@@ -207,8 +211,8 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleInputChange}
                     placeholder=""
-                    rows={6}
-                    className="bg-transparent border-gray-700 border-b-2 border-t-0 border-l-0 border-r-0 rounded-none px-0 text-white placeholder:text-gray-500 focus:border-primary focus:ring-0 resize-none"
+                    rows={4}
+                    className="bg-transparent border-gray-700 border-b-2 border-t-0 border-l-0 border-r-0 rounded-none px-0 text-white placeholder:text-gray-500 focus:border-primary focus:ring-0 resize-none text-sm sm:text-base min-h-[80px] sm:min-h-[120px]"
                     required
                   />
                 </motion.div>
@@ -222,7 +226,7 @@ const Contact = () => {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="cursor-target bg-transparent border-2 border-white text-white hover:border-primary hover:bg-primary/10 hover:text-white transition-all duration-300 px-8 py-3 rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="cursor-target bg-transparent border-2 border-white text-white hover:border-primary hover:bg-primary/10 hover:text-white transition-all duration-300 px-6 sm:px-8 py-2 sm:py-3 rounded-full disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base w-full sm:w-auto"
                   >
                     {isSubmitting ? 'Sending...' : 'Submit'}
                   </Button>
@@ -235,11 +239,11 @@ const Contact = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={isVisible ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col items-start space-y-8"
+              className="flex flex-col items-start space-y-6 sm:space-y-8 mt-8 lg:mt-0"
             >
-              <div className="flex items-center gap-2 mb-4">
+              <div className="flex items-center gap-2 mb-2 sm:mb-4">
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                <span className="text-primary text-sm font-medium">
+                <span className="text-primary text-xs sm:text-sm font-medium">
                   Available for work
                 </span>
               </div>
@@ -248,9 +252,9 @@ const Contact = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isVisible ? { opacity: 1, scale: 1 } : {}}
                 transition={{ delay: 0.5 }}
-                className="mb-8"
+                className="mb-6 sm:mb-8"
               >
-                <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white/20">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-4 border-white/20">
                   <img 
                     src="/WhatsApp Image 2025-01-26 at 22.22.44.jpeg" 
                     alt="Rohit Khandelwal"
@@ -265,7 +269,7 @@ const Contact = () => {
                 transition={{ delay: 0.6 }}
                 className="space-y-4"
               >
-                <p className="text-gray-300 text-lg leading-relaxed max-w-md">
+                <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-xs sm:max-w-md">
                   My inbox is always open. Whether you have a project or just want to say Hi, I 
                   would love to hear from you. Feel free to contact me and I'll get back to you.
                 </p>
@@ -275,7 +279,7 @@ const Contact = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isVisible ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.7 }}
-                className="flex gap-6 pt-8"
+                className="flex gap-4 sm:gap-6 pt-6 sm:pt-8"
               >
                 {socialLinks.map((social, index) => (
                   <motion.a
@@ -288,7 +292,7 @@ const Contact = () => {
                     animate={isVisible ? { opacity: 1, y: 0 } : {}}
                     transition={{ delay: 0.8 + index * 0.1 }}
                   >
-                    <social.icon className="w-6 h-6" />
+                    <social.icon className="w-5 h-5 sm:w-6 sm:h-6" />
                   </motion.a>
                 ))}
               </motion.div>

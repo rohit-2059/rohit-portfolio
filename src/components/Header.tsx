@@ -77,16 +77,28 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScrollForSection);
   }, []);
 
+  // Build responsive header classes:
+  // Mobile: always floating, constant width & position
+  // Desktop: expands when at top or scrolling up, compacts when scrolling down beyond threshold
+  const baseClasses = `fixed left-1/2 -translate-x-1/2 top-4 sm:top-0 z-50 flex items-center justify-between
+    bg-background/80 backdrop-blur-lg border border-border/20 rounded-xl sm:rounded-2xl
+    h-14 sm:h-16 px-3 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-4 transition-all duration-500 ease-in-out`;
+
+  let widthClasses = '';
+  if (!isScrolled) {
+    widthClasses = 'w-[90%] sm:w-[calc(100%-2rem)] sm:max-w-7xl';
+  } else if (isScrollingUp) {
+    // Scrolled but user scrolling up -> expand (desktop). Mobile stays same size.
+    widthClasses = 'w-[90%] sm:w-[calc(100%-2rem)] sm:max-w-7xl';
+  } else {
+    // Scrolling down -> compact only on desktop
+    widthClasses = 'w-[90%] sm:w-[85%] md:sm:w-[80%] lg:w-[50%] sm:max-w-3xl';
+  }
+
   return (
-    <header 
-      className={`fixed top-0 left-1/2 transform -translate-x-1/2 z-50 flex items-center justify-between bg-background/80 backdrop-blur-lg border border-border/20 transition-all duration-500 ease-in-out ${
-        isScrolled && !isScrollingUp 
-          ? 'w-[50%] max-w-3xl h-16 px-6 md:px-8 py-4 mt-4 rounded-2xl' 
-          : 'w-full max-w-7xl h-16 px-6 md:px-8 py-4 mt-0 rounded-none md:rounded-2xl md:mt-4 md:w-[calc(100%-2rem)]'
-      }`}
-    >
+    <header className={`${baseClasses} ${widthClasses}`}> 
       <div className="flex items-center gap-2">
-        <span className="text-2xl font-black tracking-wider text-foreground">
+        <span className="text-xl sm:text-2xl font-black tracking-wider text-foreground">
           RK
         </span>
       </div>
@@ -123,29 +135,29 @@ const Header = () => {
       </nav>
 
       {/* Mobile Navigation */}
-      <nav className="flex md:hidden items-center gap-4">
-        <a href="#home" className={`flex items-center gap-1 transition-colors text-sm ${
+      <nav className="flex md:hidden items-center gap-2 sm:gap-3 overflow-x-auto">
+        <a href="#home" className={`flex items-center gap-1 transition-colors text-xs sm:text-sm whitespace-nowrap px-1 py-1 ${
           activeSection === 'home' ? 'text-foreground/90' : 'text-muted-foreground hover:text-primary'
         }`}>
-          {activeSection === 'home' && <span className="inline-block w-2 h-2 bg-primary rounded-full" />}
+          {activeSection === 'home' && <span className="inline-block w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary rounded-full" />}
           Home
         </a>
-        <a href="#about" className={`flex items-center gap-1 transition-colors text-sm ${
+        <a href="#about" className={`flex items-center gap-1 transition-colors text-xs sm:text-sm whitespace-nowrap px-1 py-1 ${
           activeSection === 'about' ? 'text-foreground/90' : 'text-muted-foreground hover:text-primary'
         }`}>
-          {activeSection === 'about' && <span className="inline-block w-2 h-2 bg-primary rounded-full" />}
+          {activeSection === 'about' && <span className="inline-block w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary rounded-full" />}
           About
         </a>
-        <a href="#projects" className={`flex items-center gap-1 transition-colors text-sm ${
+        <a href="#projects" className={`flex items-center gap-1 transition-colors text-xs sm:text-sm whitespace-nowrap px-1 py-1 ${
           activeSection === 'projects' ? 'text-foreground/90' : 'text-muted-foreground hover:text-primary'
         }`}>
-          {activeSection === 'projects' && <span className="inline-block w-2 h-2 bg-primary rounded-full" />}
+          {activeSection === 'projects' && <span className="inline-block w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary rounded-full" />}
           Projects
         </a>
-        <a href="#contact" className={`flex items-center gap-1 transition-colors text-sm ${
+        <a href="#contact" className={`flex items-center gap-1 transition-colors text-xs sm:text-sm whitespace-nowrap px-1 py-1 ${
           activeSection === 'contact' ? 'text-foreground/90' : 'text-muted-foreground hover:text-primary'
         }`}>
-          {activeSection === 'contact' && <span className="inline-block w-2 h-2 bg-primary rounded-full" />}
+          {activeSection === 'contact' && <span className="inline-block w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary rounded-full" />}
           Contact
         </a>
       </nav>
@@ -153,10 +165,11 @@ const Header = () => {
       <a 
         href="/resume.pdf" 
         download="Rohit_Khandelwal_Resume.pdf"
-        className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-all duration-300 px-3 py-1.5 rounded-lg hover:bg-accent/50 border border-border/30 hover:border-border text-sm font-medium"
+        className="flex items-center gap-1 sm:gap-2 text-muted-foreground hover:text-foreground transition-all duration-300 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg hover:bg-accent/50 border border-border/30 hover:border-border text-xs sm:text-sm font-medium whitespace-nowrap"
       >
-        <Download className="h-4 w-4" />
-        Resume
+        <Download className="h-3 w-3 sm:h-4 sm:w-4" />
+        <span className="hidden xs:inline sm:inline">Resume</span>
+        <span className="xs:hidden sm:hidden">CV</span>
       </a>
     </header>
   );

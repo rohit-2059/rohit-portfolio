@@ -39,15 +39,15 @@ const FloatingDockMobile = ({
 }) => {
   return (
     <div className={cn("block md:hidden", className)}>
-      <div className="fixed top-0 right-0 z-[100] flex items-center justify-end p-4">
-        <div className="flex items-center gap-3 rounded-2xl bg-slate-900/90 backdrop-blur-lg border border-slate-700/40 px-4 py-3 shadow-lg">
+      <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-sm">
+        <div className="flex items-center justify-center gap-3 rounded-2xl bg-slate-900/90 backdrop-blur-lg border border-slate-700/40 px-4 py-3 shadow-lg">
           {items.map((item) => (
             <a
               key={item.title}
               href={item.href}
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/80 text-slate-400 hover:bg-blue-600/40 hover:text-blue-300 transition-colors"
+              className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-800/80 text-slate-400 hover:bg-blue-600/40 hover:text-blue-300 transition-colors touch-manipulation"
             >
-              <div className="h-5 w-5">{item.icon}</div>
+              <div className="h-6 w-6">{item.icon}</div>
             </a>
           ))}
         </div>

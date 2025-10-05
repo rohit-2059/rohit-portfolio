@@ -62,13 +62,13 @@ const About = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="about" className="py-20 px-6">
+    <section ref={sectionRef} id="about" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-12 md:mb-16"
         >
           <div className="mb-4">
             <TrueFocus 
@@ -81,19 +81,19 @@ const About = () => {
               pauseBetweenAnimations={1.5}
             />
           </div>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto px-4">
           Computer Science student with a love for creating elegant solutions to complex problems
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+        <div className="grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center mb-10 sm:mb-12 md:mb-16">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-6"
+            className="space-y-4 sm:space-y-6 order-2 md:order-1"
           >
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
               {isVisible && (
                 <ParagraphTypewriter 
                   text="Hey, I'm Rohit Khandelwal. Thanks for your attention! I am a CSE student at Lovely Professional University, where I have been building a strong foundation in web development, artificial intelligence, data structures and algorithms."
@@ -102,7 +102,7 @@ const About = () => {
                 />
               )}
             </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
               {isVisible && (
                 <ParagraphTypewriter 
                   text="My journey in tech has been driven by curiosity and a desire to build solutions that impact real-life problems. Mostly I have been on hackathons and coding competitions, which have honed my skills in problem-solving and teamwork."
@@ -111,32 +111,24 @@ const About = () => {
                 />
               )}
             </p>
-            <div className="space-y-2">
+            <div className="space-y-3">
               <motion.div 
                 initial={{ opacity: 0, x: -20 }}
                 animate={isVisible ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 0.4 }}
                 className="flex items-center gap-2"
               >
-                <div className="w-2 h-2 bg-primary rounded-full" />
-                <span className="text-foreground">B.Tech CSE | 2023-2027</span>
-              </motion.div>
-              <motion.div 
-                initial={{ opacity: 0, x: -20 }}
-                animate={isVisible ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: 0.5 }}
-                className="flex items-center gap-2"
-              >
-      
+                <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0" />
+                <span className="text-foreground text-sm sm:text-base">B.Tech CSE | 2023-2027</span>
               </motion.div>
               <motion.div 
                 initial={{ opacity: 0, x: -20 }}
                 animate={isVisible ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 0.6 }}
-                className="flex items-center gap-2"
+                className="flex items-start gap-2"
               >
-                <div className="w-2 h-2 bg-primary rounded-full" />
-                <span className="text-foreground">Location: Bharatpur, Rajasthan, India</span>
+                <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0 mt-1.5" />
+                <span className="text-foreground text-sm sm:text-base">Location: Bharatpur, Rajasthan, India</span>
               </motion.div>
             </div>
           </motion.div>
@@ -145,11 +137,11 @@ const About = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex justify-center"
+            className="flex justify-center order-1 md:order-2 mb-6 md:mb-0"
           >
             <div className="relative">
               <motion.div 
-                className="w-80 h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl"
+                className="w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               >
@@ -171,7 +163,7 @@ const About = () => {
           </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {skills.map((skill, index) => (
             <motion.div
               key={index}
@@ -181,16 +173,16 @@ const About = () => {
               whileHover={{ y: -8 }}
             >
               <Card className="glass-card border-border hover:border-primary/50 transition-all duration-300 group h-full">
-                <CardContent className="p-6">
+                <CardContent className="p-4 sm:p-6">
                   <motion.div 
-                    className="mb-4 inline-block p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors"
+                    className="mb-3 sm:mb-4 inline-block p-2 sm:p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors"
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <skill.icon className="h-6 w-6 text-primary" />
+                    <skill.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                   </motion.div>
-                  <h3 className="text-xl font-semibold mb-2">{skill.title}</h3>
-                  <p className="text-sm text-muted-foreground">{skill.description}</p>
+                  <h3 className="text-lg sm:text-xl font-semibold mb-2">{skill.title}</h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{skill.description}</p>
                 </CardContent>
               </Card>
             </motion.div>
