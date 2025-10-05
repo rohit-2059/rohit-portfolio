@@ -165,7 +165,19 @@ const Header = () => {
       <a 
         href="/resume.pdf" 
         download="Rohit_Khandelwal_Resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
         className="flex items-center gap-1 xs:gap-1 sm:gap-2 text-muted-foreground hover:text-foreground transition-all duration-300 px-1 xs:px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg hover:bg-accent/50 border border-border/30 hover:border-border text-[10px] xs:text-xs sm:text-sm font-medium whitespace-nowrap flex-shrink-0"
+        onClick={(e) => {
+          // Fallback for mobile devices that might not support download attribute
+          const link = document.createElement('a');
+          link.href = '/resume.pdf';
+          link.download = 'Rohit_Khandelwal_Resume.pdf';
+          link.target = '_blank';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }}
       >
         <Download className="h-3 w-3 xs:h-3 xs:w-3 sm:h-4 sm:w-4" />
         <span className="hidden xs:inline">Resume</span>
