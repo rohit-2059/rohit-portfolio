@@ -30,6 +30,14 @@ const Projects = () => {
   }, []);
   const featuredProjects = [
     {
+      title: "Demystify Legal Documents",
+      description: "Our solution is an AI-powered legal document analysis platform that simplifies complex legal papers. Users can upload PDFs like contracts or judgments, and the system automatically extracts and analyzes text to generate instant summaries, highlight legal risks, explain terms in plain language, and answer questions. It can also compare document versions to show changes. Like a 24/7 virtual legal expert, it helps lawyers save time and enables anyone to understand legal documents without costly consultations",
+      tags: ["Next.js","Python","Typescript","Flask","NLP","Gemini API"],
+      github: "https://github.com/rohit-2059/Demystify-legal-documents",
+      live: "https://demystify-documentation.vercel.app/",
+      gradient: "from-cyan-500 to-blue-500",
+    },
+    {
       title: "MeriCity",
       description: "Mericity is crowdsourced civic issue reporting and resolution platform that empowers citizens to report local problems, track their status, and engage with community initiatives for a better urban living experience.",
       tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Google Auth", "Google Maps API", "Vision API"],
@@ -52,15 +60,7 @@ const Projects = () => {
       github: "https://github.com/rohit-2059/Smart-Traffic-Management-System",
       live: "https://drive.google.com/file/d/1kJYldRSCk5oG-dVPCOtrhQB1ZGNop8sF/view?usp=drive_link",
       gradient: "from-green-500 to-teal-500",
-    },
-    {
-      title: "Legal Task Management",
-      description: "The Legal Task Management Application helps users easily understand and complete legal or government procedures. It offers intelligent search, step-by-step guidance, required document details, and nearby center locations for both online and offline applications.",
-      tags: ["Python", "Flask", "JavaScript", "Gemini API", "NLP"],
-      github: "https://github.com/rohit-2059/Legal-Task-Management",
-      live: "https://legal-documents.onrender.com/",
-      gradient: "from-orange-500 to-red-500",
-    },
+    }
   ];
 
   return (

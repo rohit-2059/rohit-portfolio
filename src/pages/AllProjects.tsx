@@ -36,6 +36,14 @@ const AllProjects = () => {
   // Extended projects array with more projects
   const allProjects = [
     {
+      title: "Demystify Legal Documents",
+      description: "Our solution is an AI-powered legal document analysis platform that simplifies complex legal papers. Users can upload PDFs like contracts or judgments, and the system automatically extracts and analyzes text to generate instant summaries, highlight legal risks, explain terms in plain language, and answer questions. It can also compare document versions to show changes. Like a 24/7 virtual legal expert, it helps lawyers save time and enables anyone to understand legal documents without costly consultations",
+      tags: ["Next.js","Python","Typescript","Flask","NLP","Gemini API"],
+      github: "https://github.com/rohit-2059/Demystify-legal-documents",
+      live: "https://demystify-documentation.vercel.app/",
+      gradient: "from-cyan-500 to-blue-500",
+    },
+    {
       title: "MeriCity",
       description: "Mericity is crowdsourced civic issue reporting and resolution platform that empowers citizens to report local problems, track their status, and engage with community initiatives for a better urban living experience.",
       tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Google Auth", "Google Maps API", "Vision API"],
