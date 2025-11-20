@@ -96,8 +96,8 @@ const AllProjects = () => {
       title: "AI skin disease detection",
       description: "Developed an AI-powered tool to detect skin diseases from images and assist users in early diagnosis. Implemented a deep learning model trained on the HAM10000 dataset (from Kaggle) to classify common skin conditions based on image input with 60% accuracy.",
       tags: ["Python", "JavaScript", "Flask", "Model Training", "kaggle"],
-      github: "https://github.com/rohit-2059/AI-skin-disease-detection",
-      live: "https://github.com/rohit-2059/AI-skin-disease-detection",
+      github: "https://github.com/rohit-2059/DermaAi",
+      live: "https://github.com/rohit-2059/DermaAi",
       gradient: "from-green-500 to-teal-500",
     },
     {
