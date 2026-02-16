@@ -28,35 +28,34 @@ const About = () => {
 
   const skills = [
     {
+      icon: Terminal,
+      title: "Programming Languages",
+      description: "C++, JavaScript, SQL, Python, Java",
+    },
+    {
       icon: Code,
       title: "Web Development",
-      description: "React, Node.js, Express.js, HTML, CSS",
+      description: "React.js, Node.js, Express.js, Flask, Tailwind CSS, HTML, CSS"
     },
     {
       icon: Lightbulb,
       title: "Core",
-      description: "DSA, Operating System, Computer Network",
-    },
-    {
-      icon: Terminal,
-      title: "Programming Languages",
-      description: "C++, JavaScript, Python, Java",
+      description: "Data Structures, Operating System, Computer Network, Database Management System, Object Oriented Programming"
     },
     {
       icon: Database,
       title: "Database",
-      description: "MongoDB, MySQL",
+      description: "MongoDB, MySQL, PostgreSQL",
     },
-    
     {
       icon: Brain,
       title: "AI Tools",
-      description: "GitHub Copilot, ChatGPT, Claude, Loveable, V0",
+      description: "GitHub Copilot, AntiGravity, Cursor, Claude, Loveable, V0",
     },
     {
       icon: Zap,
-      title: "Tools & Tech",
-      description: "Git, Github, Google Cloud, Firebase, Jupyter Notebook"
+      title: "Tools & Platforms",
+      description: "Git, Github, Google Cloud Platform, Firebase, Jupyter Notebook, Render, Vercel, Postman"
     },
     
   ];

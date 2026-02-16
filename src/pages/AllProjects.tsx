@@ -35,6 +35,22 @@ const AllProjects = () => {
 
   // Extended projects array with more projects
   const allProjects = [
+     {
+      title: "Sports Pro",
+      description: "Sports pro is a smart sports management platform designed to simplify tournament organization, team coordination, and match scheduling. The system enables admins to manage tournaments end-to-end, automatically generate match schedules, and track results, while coaches and players get real-time access to their match information. Acting like a centralized digital sports coordinator, it reduces manual effort, avoids scheduling conflicts, and keeps everyone informed.",
+      tags: ["React.js", "Node.js", "Express.js", "MongoDB"],
+      github: "https://github.com/rohit-2059/sports-managment",
+      live: "https://sports-managment.vercel.app/",
+      gradient: "from-cyan-500 to-blue-500",
+    },
+     {
+      title: "Vaani - Speech to Text",
+      description: "Vaani is a powerful speech-to-text and accessibility-focused mobile application that provides real-time voice transcription and system-wide captions across apps. Built with React Native, it enables users to convert spoken words into readable text instantly acting like a 24/7 universal captioning assistant for smartphones.",
+      tags: ["React Native CLI", "Speech-to-Text APIs"],
+      github: "https://github.com/rohit-2059/Vaani",
+      live: "https://drive.google.com/file/d/1cgg_ukGU7WXWKHVLupgTy6el__9Rhepx/view",
+      gradient: "from-cyan-500 to-blue-500",
+    },
     {
       title: "Demystify Legal Documents",
       description: "Our solution is an AI-powered legal document analysis platform that simplifies complex legal papers. Users can upload PDFs like contracts or judgments, and the system automatically extracts and analyzes text to generate instant summaries, highlight legal risks, explain terms in plain language, and answer questions. It can also compare document versions to show changes. Like a 24/7 virtual legal expert, it helps lawyers save time and enables anyone to understand legal documents without costly consultations",
