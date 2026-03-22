@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 interface TrueFocusProps {
@@ -34,6 +34,21 @@ const TrueFocus: React.FC<TrueFocusProps> = ({
   const wordRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const [focusRect, setFocusRect] = useState<FocusRect>({ x: 0, y: 0, width: 0, height: 0 });
 
+  const updateFocusRect = useCallback(() => {
+    if (currentIndex === null || currentIndex === -1) return;
+    if (!wordRefs.current[currentIndex] || !containerRef.current) return;
+
+    const parentRect = containerRef.current.getBoundingClientRect();
+    const activeRect = wordRefs.current[currentIndex]!.getBoundingClientRect();
+
+    setFocusRect({
+      x: activeRect.left - parentRect.left,
+      y: activeRect.top - parentRect.top,
+      width: activeRect.width,
+      height: activeRect.height
+    });
+  }, [currentIndex]);
+
   useEffect(() => {
     const interval = setInterval(
       () => {
@@ -49,19 +64,21 @@ const TrueFocus: React.FC<TrueFocusProps> = ({
   }, [animationDuration, pauseBetweenAnimations, words.length, lastActiveIndex]);
 
   useEffect(() => {
-    if (currentIndex === null || currentIndex === -1) return;
-    if (!wordRefs.current[currentIndex] || !containerRef.current) return;
+    updateFocusRect();
+  }, [updateFocusRect, words.length]);
 
-    const parentRect = containerRef.current.getBoundingClientRect();
-    const activeRect = wordRefs.current[currentIndex]!.getBoundingClientRect();
+  useEffect(() => {
+    updateFocusRect();
+    const timer = window.setTimeout(updateFocusRect, 120);
 
-    setFocusRect({
-      x: activeRect.left - parentRect.left,
-      y: activeRect.top - parentRect.top,
-      width: activeRect.width,
-      height: activeRect.height
-    });
-  }, [currentIndex, words.length]);
+    const handleResize = () => updateFocusRect();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [sentence, updateFocusRect]);
 
   const handleMouseEnter = (index: number) => {
     setLastActiveIndex(currentIndex); // Store the current auto-cycling index
@@ -83,7 +100,7 @@ const TrueFocus: React.FC<TrueFocusProps> = ({
             ref={el => {
               wordRefs.current[index] = el;
             }}
-            className="relative text-[3rem] font-black cursor-pointer"
+            className="relative text-[2.1rem] sm:text-[2.6rem] md:text-[3rem] font-black cursor-pointer text-foreground"
             style={
               {
                 filter: isActive ? `blur(0px)` : `blur(${blurAmount}px)`,

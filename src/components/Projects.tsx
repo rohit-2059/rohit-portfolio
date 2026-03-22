@@ -29,29 +29,21 @@ const Projects = () => {
     return () => observer.disconnect();
   }, []);
   const featuredProjects = [
-     {
-      title: "Sports Pro",
-      description: "Sports pro is a smart sports management platform designed to simplify tournament organization, team coordination, and match scheduling. The system enables admins to manage tournaments end-to-end, automatically generate match schedules, and track results, while coaches and players get real-time access to their match information. Acting like a centralized digital sports coordinator, it reduces manual effort, avoids scheduling conflicts, and keeps everyone informed.",
-      tags: ["React.js", "Node.js", "Express.js", "MongoDB"],
-      github: "https://github.com/rohit-2059/sports-managment",
-      live: "https://sports-managment.vercel.app/",
-      gradient: "from-cyan-500 to-blue-500",
-    },
-     {
-      title: "Vaani - Speech to Text",
-      description: "Vaani is a powerful speech-to-text and accessibility-focused mobile application that provides real-time voice transcription and system-wide captions across apps. Built with React Native, it enables users to convert spoken words into readable text instantly acting like a 24/7 universal captioning assistant for smartphones.",
-      tags: ["React Native CLI", "Speech-to-Text APIs"],
-      github: "https://github.com/rohit-2059/Vaani",
-      live: "https://drive.google.com/file/d/1cgg_ukGU7WXWKHVLupgTy6el__9Rhepx/view",
-      gradient: "from-cyan-500 to-blue-500",
-    },
     {
       title: "Demystify Legal Documents",
       description: "Our solution is an AI-powered legal document analysis platform that simplifies complex legal papers. Users can upload PDFs like contracts or judgments, and the system automatically extracts and analyzes text to generate instant summaries, highlight legal risks, explain terms in plain language, and answer questions. It can also compare document versions to show changes. Like a 24/7 virtual legal expert, it helps lawyers save time and enables anyone to understand legal documents without costly consultations",
       tags: ["Next.js","Python","Typescript","Flask","NLP","Gemini API"],
       github: "https://github.com/rohit-2059/Demystify-legal-documents",
       live: "https://demystify-documentation.vercel.app/",
-      gradient: "from-cyan-500 to-blue-500",
+      image: "/legal.png",
+    },
+     {
+      title: "AI skin disease detection",
+      description: "Developed an AI-powered tool to detect skin diseases from images and assist users in early diagnosis. Implemented a deep learning model trained on the HAM10000 dataset (from Kaggle) to classify common skin conditions based on image input with 60% accuracy.",
+      tags: ["Python", "JavaScript", "Flask", "Model Training", "kaggle"],
+      github: "https://github.com/rohit-2059/DermaAi",
+      live: "https://github.com/rohit-2059/DermaAi",
+      image: "/skinDisease.png",
     },
     {
       title: "MeriCity",
@@ -59,24 +51,9 @@ const Projects = () => {
       tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Google Auth", "Google Maps API", "Vision API"],
       github: "https://github.com/rohit-2059/Mericity",
       live: "https://www.mericity.app",
-      gradient: "from-cyan-500 to-blue-500",
+      image: "/mericity.png",
     },
-    {
-      title: "Smart Cart",
-      description: "A next-gen smart shopping platform that brings together AI intelligence and seamless e-commerce. From automatically adding recipe ingredients to your cart, to suggesting medicines, to finding the right products instantly, it delivers a personalized and convenient shopping experience.",
-      tags: ["React.js", "Node.js", "Express.js", "Gemini API", "NLP"],
-      github: "https://github.com/rohit-2059/Prompt-Shop?tab=readme-ov-file",
-      live: "https://www.smart-cart.app",
-      gradient: "from-purple-500 to-pink-500",
-    },
-    {
-      title: "Smart Traffic Management System",
-      description: "The Traffic Management System is an intelligent traffic light control solution that manages a 4-way intersection with adaptive signal control, real-time visualization, emergency vehicle priority, and fairness algorithms to ensure smooth, safe, and efficient traffic flow.",
-      tags: ["Data Structures", "JavaScript", "Node.js"],
-      github: "https://github.com/rohit-2059/Smart-Traffic-Management-System",
-      live: "https://drive.google.com/file/d/1kJYldRSCk5oG-dVPCOtrhQB1ZGNop8sF/view?usp=drive_link",
-      gradient: "from-green-500 to-teal-500",
-    }
+    
   ];
 
   return (
@@ -108,42 +85,37 @@ const Projects = () => {
           <TargetCursor targetSelector=".cursor-target" />
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-10 md:mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-10 md:mb-12">
           {featuredProjects.map((project, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 50 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -12, rotateY: 2 }}
+              whileHover={{ y: -8, rotateY: 1.5 }}
               className="perspective-1000"
             >
-              <Card className="glass-card border-border/50 hover:border-primary/60 transition-all duration-500 group overflow-hidden h-full shadow-lg hover:shadow-2xl hover:shadow-primary/10 bg-gradient-to-br from-background/95 to-background/80 backdrop-blur-xl">
-                {/* Enhanced gradient header */}
-                <motion.div 
-                  className={`h-3 bg-gradient-to-r ${project.gradient} relative overflow-hidden`}
-                  initial={{ scaleX: 0 }}
-                  animate={isVisible ? { scaleX: 1 } : {}}
-                  transition={{ duration: 0.8, delay: index * 0.1 + 0.3 }}
-                >
-                  <motion.div 
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                    animate={{ x: ["-100%", "100%"] }}
-                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+              <Card className="glass-card border-border/50 hover:border-primary/60 transition-all duration-300 group overflow-hidden h-full shadow-lg hover:shadow-xl hover:shadow-primary/10 bg-background/90 backdrop-blur-xl">
+                <div className="relative border-b border-border/60 bg-white/95">
+                  <img
+                    src={project.image}
+                    alt={`${project.title} preview`}
+                    loading="lazy"
+                    className="w-full h-40 sm:h-44 object-contain object-top bg-white"
                   />
-                </motion.div>
+                </div>
                 
-                <CardHeader className="pb-3 sm:pb-4">
+                <CardHeader className="pb-2 sm:pb-3">
                   <motion.h3 
-                    className="text-xl sm:text-2xl font-bold group-hover:text-primary transition-all duration-300 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text"
+                    className="text-base sm:text-lg font-bold group-hover:text-primary transition-colors duration-300 line-clamp-2"
                     whileHover={{ scale: 1.02 }}
                   >
                     {project.title}
                   </motion.h3>
                 </CardHeader>
 
-                <CardContent className="pb-4 sm:pb-6">
-                  <p className="text-muted-foreground mb-4 sm:mb-6 leading-relaxed text-xs sm:text-sm">
+                <CardContent className="pb-3 sm:pb-4">
+                  <p className="text-muted-foreground mb-3 leading-relaxed text-xs sm:text-sm line-clamp-3">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-1.5 sm:gap-2">
@@ -166,38 +138,25 @@ const Projects = () => {
                   </div>
                 </CardContent>
 
-                <CardFooter className="gap-2 sm:gap-4 pt-2 flex-col sm:flex-row">
-                  <Button
-                    asChild
-                    variant="outline"
-                    size="sm"
-                    className="cursor-target group/btn relative overflow-hidden hover:scale-105 transition-all duration-300 border-primary/30 hover:border-primary hover:bg-primary/5 hover:shadow-lg hover:shadow-primary/20 backdrop-blur-sm font-medium before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-primary/10 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 w-full sm:w-auto"
+                <CardFooter className="pt-2 flex items-center justify-between gap-4">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cursor-target inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 decoration-primary/50 hover:decoration-foreground transition-colors"
                   >
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="relative z-10 flex items-center justify-center"
-                    >
-                      <Github className="mr-2 h-3 w-3 sm:h-4 sm:w-4 transition-all duration-300 group-hover/btn:scale-110 group-hover/btn:rotate-12" />
-                      <span className="group-hover/btn:text-primary transition-colors duration-300 text-sm">Code</span>
-                    </a>
-                  </Button>
-                  <Button
-                    asChild
-                    size="sm"
-                    className="cursor-target group/btn relative overflow-hidden bg-gradient-to-r from-primary via-primary to-secondary hover:from-primary hover:via-blue-500 hover:to-secondary hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary/30 font-medium before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 w-full sm:w-auto"
+                    <Github className="h-3 w-3 sm:h-4 sm:w-4" />
+                    <span>Code</span>
+                  </a>
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cursor-target inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 decoration-primary/50 hover:decoration-foreground transition-colors ml-auto"
                   >
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="relative z-10 flex items-center justify-center"
-                    >
-                      <ExternalLink className="mr-2 h-3 w-3 sm:h-4 sm:w-4 transition-all duration-300 group-hover/btn:scale-110 group-hover/btn:-rotate-12" />
-                      <span className="group-hover/btn:text-white transition-colors duration-300 text-sm">Live Demo</span>
-                    </a>
-                  </Button>
+                    <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4" />
+                    <span>Live</span>
+                  </a>
                 </CardFooter>
               </Card>
             </motion.div>
@@ -214,7 +173,7 @@ const Projects = () => {
           <Button
             asChild
             size="lg"
-            className="cursor-target group/btn relative overflow-hidden bg-gradient-to-r from-primary via-blue-500 to-secondary hover:from-primary hover:via-purple-500 hover:to-secondary hover:scale-110 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-primary/40 font-semibold px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base border border-primary/20 hover:border-primary/40 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-1000 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto"
+            className="cursor-target group/btn bg-primary hover:bg-primary/90 hover:scale-105 transition-all duration-300 shadow-lg font-semibold px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base border border-primary/20 hover:border-primary/40 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto"
           >
             <Link to="/projects" className="relative z-10 flex items-center justify-center">
               <span className="group-hover/btn:text-white transition-colors duration-300">View All Projects</span>

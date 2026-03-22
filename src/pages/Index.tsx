@@ -1,5 +1,7 @@
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import Skills from "@/components/Skills";
+import Certifications from "@/components/Certifications";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -18,7 +20,7 @@ const Index = () => {
           <div className="w-full h-full min-h-screen">
             <Lightning 
               hue={219} 
-              xOffset={2} 
+              xOffset={2.2} 
               speed={1} 
               intensity={1} 
               size={0.9} 
@@ -33,6 +35,8 @@ const Index = () => {
         <div className="relative bg-transparent min-h-screen" style={{ zIndex: 10 }}>
           <Hero />
           <About />
+          <Skills />
+          <Certifications />
           <Projects />
           <Contact />
         </div>

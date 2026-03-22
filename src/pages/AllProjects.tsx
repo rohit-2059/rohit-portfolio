@@ -35,13 +35,21 @@ const AllProjects = () => {
 
   // Extended projects array with more projects
   const allProjects = [
+      {
+        title: "Absentra",
+        description: "Absentra is a full-stack employee leave management system designed to streamline organizational workflows with role-based dashboards for Admins, Managers, and Employees. It enables efficient leave tracking, complaint handling, and reimbursement processing with real-time messaging support. Acting as a centralized workforce management solution, it minimizes manual processes, ensures transparency, and enhances team communication.",
+        tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Firebase", "Socket.IO"],
+        github: "https://github.com/rohit-2059/Leave-managment-system",
+        live: "https://github.com/rohit-2059/Leave-managment-system",
+        image: "/absentra.png",
+      },
      {
       title: "Sports Pro",
       description: "Sports pro is a smart sports management platform designed to simplify tournament organization, team coordination, and match scheduling. The system enables admins to manage tournaments end-to-end, automatically generate match schedules, and track results, while coaches and players get real-time access to their match information. Acting like a centralized digital sports coordinator, it reduces manual effort, avoids scheduling conflicts, and keeps everyone informed.",
       tags: ["React.js", "Node.js", "Express.js", "MongoDB"],
       github: "https://github.com/rohit-2059/sports-managment",
       live: "https://sports-managment.vercel.app/",
-      gradient: "from-cyan-500 to-blue-500",
+      image: "/sportsPro.png",
     },
      {
       title: "Vaani - Speech to Text",
@@ -49,7 +57,7 @@ const AllProjects = () => {
       tags: ["React Native CLI", "Speech-to-Text APIs"],
       github: "https://github.com/rohit-2059/Vaani",
       live: "https://drive.google.com/file/d/1cgg_ukGU7WXWKHVLupgTy6el__9Rhepx/view",
-      gradient: "from-cyan-500 to-blue-500",
+      image: "/vaani.jpeg",
     },
     {
       title: "Demystify Legal Documents",
@@ -57,7 +65,7 @@ const AllProjects = () => {
       tags: ["Next.js","Python","Typescript","Flask","NLP","Gemini API"],
       github: "https://github.com/rohit-2059/Demystify-legal-documents",
       live: "https://demystify-documentation.vercel.app/",
-      gradient: "from-cyan-500 to-blue-500",
+      image: "/legal.png",
     },
     {
       title: "MeriCity",
@@ -65,7 +73,7 @@ const AllProjects = () => {
       tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Google Auth", "Google Maps API", "Vision API"],
       github: "https://github.com/rohit-2059/Mericity",
       live: "https://www.mericity.app",
-      gradient: "from-cyan-500 to-blue-500",
+      image: "/mericity.png",
     },
     {
       title: "Smart Cart",
@@ -73,7 +81,7 @@ const AllProjects = () => {
       tags: ["React.js", "Node.js", "Express.js", "Gemini API", "NLP"],
       github: "https://github.com/rohit-2059/Prompt-Shop?tab=readme-ov-file",
       live: "https://www.smart-cart.app",
-      gradient: "from-purple-500 to-pink-500",
+      image: "/smartCart.png",
     },
     {
       title: "Smart Traffic Management System",
@@ -81,7 +89,7 @@ const AllProjects = () => {
       tags: ["Data Structures", "JavaScript", "Node.js"],
       github: "https://github.com/rohit-2059/Smart-Traffic-Management-System",
       live: "https://drive.google.com/file/d/1kJYldRSCk5oG-dVPCOtrhQB1ZGNop8sF/view?usp=drive_link",
-      gradient: "from-green-500 to-teal-500",
+      image: "/smartTraffic.png",
     },
     {
       title: "Legal Task Management",
@@ -89,16 +97,23 @@ const AllProjects = () => {
       tags: ["Python", "Flask", "JavaScript", "Gemini API", "NLP"],
       github: "https://github.com/rohit-2059/Legal-Task-Management",
       live: "https://legal-documents.onrender.com/",
-      gradient: "from-orange-500 to-red-500",
+      image: "/legalTask.png",
     },
-
+    {
+      title: "HisabKitab",
+      description: "HisabKitab is a modern personal finance tracker that helps users manage income, expenses, and budgets with real-time synchronization and interactive analytics. Built with React and Firebase, it provides secure authentication, detailed financial insights through charts, and seamless tracking of transactions. Acting as a smart financial companion, it enables users to monitor spending habits, make informed decisions, and maintain better financial control.",
+      tags: ["React.js", "Firebase", "Firestore", "Tailwind CSS", "Chart.js"],
+      github: "https://github.com/rohit-2059/FinTrack---Personal-Finance-Tracker",
+      live: "https://fin-track-personal-finance-tracker-five.vercel.app/",
+      image: "/hisabKitaab.png",
+    },
     {
       title: "Voice Based Shopping Assistant",
       description: "Built a voice-activated shopping assistant that allows users to search for products using natural speech and automatically navigates to the relevant product pages across platforms like Amazon, Flipkart etc. The project was primarily focused on learning web scraping using Selenium and integrating it with voice input for a seamless, hands-free product search experience.",
       tags: ["Python", "NLP", "Web Scraping", "Selenium"],
       github: "https://github.com/rohit-2059/VOICE-ASSISTANCE-2",
       live: "https://github.com/rohit-2059/VOICE-ASSISTANCE-2",
-      gradient: "from-cyan-500 to-blue-500",
+      image: "/voiceAssistance.png",
     },
     {
       title: "Virtual Pet Care System",
@@ -106,7 +121,7 @@ const AllProjects = () => {
       tags: ["PHP", "MySQL", "JavaScript",  "Tailwind CSS", "XAMPP"],
       github: "https://github.com/rohit-2059/PetCare",
       live: "https://virtualpetcare.42web.io/",
-      gradient: "from-purple-500 to-pink-500",
+      image: "/virtualPetCare.png",
     },
     {
       title: "AI skin disease detection",
@@ -114,7 +129,7 @@ const AllProjects = () => {
       tags: ["Python", "JavaScript", "Flask", "Model Training", "kaggle"],
       github: "https://github.com/rohit-2059/DermaAi",
       live: "https://github.com/rohit-2059/DermaAi",
-      gradient: "from-green-500 to-teal-500",
+      image: "/skinDisease.png",
     },
     {
       title: "Phishing Detection ",
@@ -122,7 +137,7 @@ const AllProjects = () => {
       tags: ["Python", "Flask", "JavaScript", "HTML", "CSS" ],
       github: "",
       live: "",
-      gradient: "from-orange-500 to-red-500",
+      image: "/Phishing.png",
     },
     {
       title: "Hand Gesture Controller",
@@ -130,7 +145,7 @@ const AllProjects = () => {
       tags: ["OpenCV", "Python"],
       github: "https://github.com/rohit-2059/Hand-Gesture-Control",
       live: "https://www.linkedin.com/posts/-rohit-khandelwal-_handgesturecontrol-computervision-ai-activity-7279478610300715008-xjPT?utm_source=share&utm_medium=member_desktop&rcm=ACoAAET4zY0BH3OCmih2JNzVDmhWwcUkxqaaIMc",
-      gradient: "from-blue-500 to-indigo-500",
+      image: "/HandGesture.png",
     },
     {
       title: "Write the Rights",
@@ -138,7 +153,7 @@ const AllProjects = () => {
       tags: ["HTML5", "CSS", "JavaScript"],
       github: "https://github.com/rohit-2059/writeTheright",
       live: "https://write-the-rights.vercel.app/",
-      gradient: "from-emerald-500 to-green-500",
+      image: "/writeTheRights.png",
     },
     {
       title: "MedEase",
@@ -146,7 +161,7 @@ const AllProjects = () => {
       tags: ["PHP", "JavaScript", "HTML", "CSS", "MYSQL"],
       github: "https://github.com/rohit-2059/Hospital-Management-system",
       live: "https://github.com/rohit-2059/Hospital-Management-system",
-      gradient: "from-pink-500 to-rose-500",
+      image: "/medease.png",
     },
     {
       title: "Event Management And Ticket Booking System",
@@ -154,7 +169,7 @@ const AllProjects = () => {
       tags: ["HTML","CSS","JavaScript"],
       github: "https://github.com/rohit-2059/Event-Management-And-Ticket-Booking-Website",
       live: "https://event-management-and-ticket-booking.vercel.app/",
-      gradient: "from-yellow-500 to-orange-500",
+      image: "/EventManagement.png",
     },
   ];
 
@@ -168,7 +183,7 @@ const AllProjects = () => {
         <div className="w-full h-full min-h-screen">
           <Lightning 
             hue={219} 
-            xOffset={2} 
+            xOffset={2.2} 
             speed={1} 
             intensity={1} 
             size={0.9} 
@@ -227,42 +242,38 @@ const AllProjects = () => {
             <TargetCursor targetSelector=".cursor-target" />
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {allProjects.map((project, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 50 }}
                 animate={isVisible ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -12, rotateY: 2 }}
+                whileHover={{ y: -8, rotateY: 1.5 }}
                 className="perspective-1000"
               >
-                <Card className="glass-card border-border/50 hover:border-primary/60 transition-all duration-500 group overflow-hidden h-full shadow-lg hover:shadow-2xl hover:shadow-primary/10 bg-gradient-to-br from-background/95 to-background/80 backdrop-blur-xl">
-                  {/* Enhanced gradient header */}
-                  <motion.div 
-                    className={`h-3 bg-gradient-to-r ${project.gradient} relative overflow-hidden`}
-                    initial={{ scaleX: 0 }}
-                    animate={isVisible ? { scaleX: 1 } : {}}
-                    transition={{ duration: 0.8, delay: index * 0.1 + 0.3 }}
-                  >
-                    <motion.div 
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                      animate={{ x: ["-100%", "100%"] }}
-                      transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                <Card className="glass-card border-border/50 hover:border-primary/60 transition-all duration-300 group overflow-hidden h-full shadow-lg hover:shadow-xl hover:shadow-primary/10 bg-background/90 backdrop-blur-xl">
+
+                  <div className="relative border-b border-border/60 bg-white/95">
+                    <img
+                      src={project.image}
+                      alt={`${project.title} preview`}
+                      loading="lazy"
+                      className="w-full h-40 sm:h-44 object-contain object-top bg-white"
                     />
-                  </motion.div>
+                  </div>
                   
-                  <CardHeader className="pb-3 sm:pb-4">
+                  <CardHeader className="pb-2 sm:pb-3">
                     <motion.h3 
-                      className="text-lg sm:text-xl font-bold group-hover:text-primary transition-all duration-300 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text line-clamp-2"
+                      className="text-base sm:text-lg font-bold group-hover:text-primary transition-all duration-300 line-clamp-2"
                       whileHover={{ scale: 1.02 }}
                     >
                       {project.title}
                     </motion.h3>
                   </CardHeader>
 
-                  <CardContent className="pb-4 sm:pb-6">
-                    <p className="text-muted-foreground mb-4 sm:mb-6 leading-relaxed text-xs sm:text-sm line-clamp-4">
+                  <CardContent className="pb-3 sm:pb-4">
+                    <p className="text-muted-foreground mb-3 leading-relaxed text-xs sm:text-sm line-clamp-3">
                       {project.description}
                     </p>
                     <div className="flex flex-wrap gap-1.5 sm:gap-2">
@@ -285,38 +296,25 @@ const AllProjects = () => {
                     </div>
                   </CardContent>
 
-                  <CardFooter className="gap-2 sm:gap-3 pt-2 flex-col sm:flex-row">
-                    <Button
-                      asChild
-                      variant="outline"
-                      size="sm"
-                      className="cursor-target group/btn relative overflow-hidden hover:scale-105 transition-all duration-300 border-primary/30 hover:border-primary hover:bg-primary/5 hover:shadow-lg hover:shadow-primary/20 backdrop-blur-sm font-medium w-full sm:flex-1 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-primary/10 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
+                  <CardFooter className="pt-2 flex items-center justify-between gap-4">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cursor-target inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 decoration-primary/50 hover:decoration-foreground transition-colors"
                     >
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="relative z-10 flex items-center justify-center"
-                      >
-                        <Github className="mr-2 h-3 w-3 sm:h-4 sm:w-4 transition-all duration-300 group-hover/btn:scale-110 group-hover/btn:rotate-12" />
-                        <span className="group-hover/btn:text-primary transition-colors duration-300 text-sm">Code</span>
-                      </a>
-                    </Button>
-                    <Button
-                      asChild
-                      size="sm"
-                      className="cursor-target group/btn relative overflow-hidden bg-gradient-to-r from-primary via-primary to-secondary hover:from-primary hover:via-blue-500 hover:to-secondary hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary/30 font-medium w-full sm:flex-1 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
+                      <Github className="h-3 w-3 sm:h-4 sm:w-4" />
+                      <span>Code</span>
+                    </a>
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cursor-target inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 decoration-primary/50 hover:decoration-foreground transition-colors ml-auto"
                     >
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="relative z-10 flex items-center justify-center"
-                      >
-                        <ExternalLink className="mr-2 h-3 w-3 sm:h-4 sm:w-4 transition-all duration-300 group-hover/btn:scale-110 group-hover/btn:-rotate-12" />
-                        <span className="group-hover/btn:text-white transition-colors duration-300 text-sm">Live</span>
-                      </a>
-                    </Button>
+                      <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4" />
+                      <span>Live</span>
+                    </a>
                   </CardFooter>
                 </Card>
               </motion.div>

@@ -1,8 +1,5 @@
-import { Code, Database, Lightbulb, Zap, Brain, Terminal } from "lucide-react";
-import { Card, CardContent } from "./ui/card";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import ParagraphTypewriter from "./ui/paragraph-typewriter";
 import TrueFocus from "./ui/true-focus";
 
 const About = () => {
@@ -25,40 +22,6 @@ const About = () => {
 
     return () => observer.disconnect();
   }, []);
-
-  const skills = [
-    {
-      icon: Terminal,
-      title: "Programming Languages",
-      description: "C++, JavaScript, SQL, Python, Java",
-    },
-    {
-      icon: Code,
-      title: "Web Development",
-      description: "React.js, Node.js, Express.js, Flask, Tailwind CSS, HTML, CSS"
-    },
-    {
-      icon: Lightbulb,
-      title: "Core",
-      description: "Data Structures, Operating System, Computer Network, Database Management System, Object Oriented Programming"
-    },
-    {
-      icon: Database,
-      title: "Database",
-      description: "MongoDB, MySQL, PostgreSQL",
-    },
-    {
-      icon: Brain,
-      title: "AI Tools",
-      description: "GitHub Copilot, AntiGravity, Cursor, Claude, Loveable, V0",
-    },
-    {
-      icon: Zap,
-      title: "Tools & Platforms",
-      description: "Git, Github, Google Cloud Platform, Firebase, Jupyter Notebook, Render, Vercel, Postman"
-    },
-    
-  ];
 
   return (
     <section ref={sectionRef} id="about" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
@@ -93,22 +56,10 @@ const About = () => {
             className="space-y-4 sm:space-y-6 order-2 md:order-1"
           >
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-              {isVisible && (
-                <ParagraphTypewriter 
-                  text="Hey, I'm Rohit Khandelwal. Thanks for your attention! I am a CSE student at Lovely Professional University, where I have been building a strong foundation in web development, artificial intelligence, data structures and algorithms."
-                  speed={50}
-                  delay={800}
-                />
-              )}
+              Hey, I&apos;m Rohit Khandelwal. Thanks for your attention! I am a CSE student at Lovely Professional University, where I have been building a strong foundation in web development, artificial intelligence, data structures and algorithms.
             </p>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-              {isVisible && (
-                <ParagraphTypewriter 
-                  text="My journey in tech has been driven by curiosity and a desire to build solutions that impact real-life problems. Mostly I have been on hackathons and coding competitions, which have honed my skills in problem-solving and teamwork."
-                  speed={50}
-                  delay={13700}
-                />
-              )}
+              My journey in tech has been driven by curiosity and a desire to build solutions that impact real-life problems. Mostly I have been on hackathons and coding competitions, which have honed my skills in problem-solving and teamwork.
             </p>
             <div className="space-y-3">
               <motion.div 
@@ -156,36 +107,8 @@ const About = () => {
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               />
-              {/* Glow effect */}
-              <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 blur-xl -z-10" />
             </div>
           </motion.div>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {skills.map((skill, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 * index }}
-              whileHover={{ y: -8 }}
-            >
-              <Card className="glass-card border-border hover:border-primary/50 transition-all duration-300 group h-full">
-                <CardContent className="p-4 sm:p-6">
-                  <motion.div 
-                    className="mb-3 sm:mb-4 inline-block p-2 sm:p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors"
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <skill.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
-                  </motion.div>
-                  <h3 className="text-lg sm:text-xl font-semibold mb-2">{skill.title}</h3>
-                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{skill.description}</p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
         </div>
       </div>
     </section>
