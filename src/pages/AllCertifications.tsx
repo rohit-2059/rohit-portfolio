@@ -52,16 +52,13 @@ const AllCertifications = () => {
               transition={{ duration: 0.5 }}
               className="mb-6 sm:mb-8"
             >
-              <Button
-                asChild
-                variant="outline"
-                className="cursor-target group/btn relative overflow-hidden hover:border-primary hover:bg-primary/5 hover:shadow-lg hover:shadow-primary/20 hover:scale-105 transition-all duration-300 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-primary/10 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 text-sm sm:text-base"
+              <Link
+                to="/#certifications"
+                className="cursor-target group inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-primary hover:text-foreground transition-colors duration-300"
               >
-                <Link to="/" className="relative z-10 flex items-center">
-                  <ArrowLeft className="mr-2 h-3 w-3 sm:h-4 sm:w-4 group-hover/btn:scale-110 group-hover/btn:-translate-x-1 transition-all duration-300" />
-                  <span className="group-hover/btn:text-primary transition-colors duration-300">Back to Home</span>
-                </Link>
-              </Button>
+                <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-300 group-hover:-translate-x-1" />
+                <span className="border-b border-primary/45 group-hover:border-foreground/60 pb-0.5">Back to Home</span>
+              </Link>
             </motion.div>
 
             <motion.div

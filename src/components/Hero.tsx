@@ -16,42 +16,32 @@ const Hero = () => {
         <TargetCursor targetSelector=".cursor-target" />
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="text-center space-y-6 sm:space-y-8 md:space-y-10 flex flex-col justify-center min-h-[calc(100vh-8rem)] sm:min-h-[calc(100vh-10rem)] md:min-h-[calc(100vh-12rem)]">
+        <div className="text-center lg:text-left space-y-6 sm:space-y-8 md:space-y-10 flex flex-col justify-center min-h-[calc(100vh-8rem)] sm:min-h-[calc(100vh-10rem)] md:min-h-[calc(100vh-12rem)]">
           
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight px-2 sm:px-0"
+            className="font-bold leading-tight px-2 sm:px-0 tracking-tight flex flex-col gap-1 sm:gap-2"
           >
-            <BlurText
-              text="Hi, I'm Rohit Khandelwal"
-              delay={150}
-              className="gradient-text"
-              animateBy="words"
-              direction="top"
-            />
+            <span className="text-3xl sm:text-4xl md:text-5xl text-foreground">Hi, I'm</span>
+            <span className="gradient-text text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5rem] pb-2 leading-none">Rohit Khandelwal</span>
           </motion.h1>
           
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-3xl mx-auto px-4 sm:px-2 md:px-0"
+            className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl px-4 sm:px-0 mx-auto lg:mx-0 leading-relaxed font-medium"
           >
-            <ParagraphTypewriter 
-              text="On a mission to solve real problems and deliver meaningful impact through modern technologies"
-              speed={60}
-              delay={1500}
-              showCursor={false}
-            />
+            Driven by a clear vision to solve complex, real-world problems through carefully crafted software. I thrive on building reliable, intuitive digital solutions that create meaningful impact.
           </motion.p>
           
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-2 sm:pt-3 px-4 sm:px-0"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center pt-2 sm:pt-3 px-4 sm:px-0"
           >
             <a href="#contact" className="cursor-target w-full sm:w-auto">
               <button className="inline-flex h-11 sm:h-12 w-full sm:w-auto animate-shimmer items-center justify-center rounded-md border border-slate-700/50 bg-[linear-gradient(110deg,#0f172a,45%,#1e293b,55%,#0f172a)] bg-[length:200%_100%] px-4 sm:px-6 font-medium text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-slate-900 text-sm sm:text-base">
@@ -70,7 +60,7 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex gap-4 sm:gap-6 md:gap-7 justify-center pt-4 sm:pt-6"
+            className="flex gap-4 sm:gap-6 md:gap-7 justify-center lg:justify-start pt-4 sm:pt-6"
           >
             <motion.a
               href="https://github.com/rohit-2059"

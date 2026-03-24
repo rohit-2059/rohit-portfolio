@@ -1,10 +1,8 @@
 import { certifications, getSortedCertifications } from "@/data/certifications";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Award } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import TrueFocus from "./ui/true-focus";
 
 const Certifications = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -36,21 +34,18 @@ const Certifications = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10 sm:mb-12"
+          className="mb-10 sm:mb-12"
         >
-          <div className="mb-4">
-            <TrueFocus
-              sentence="My Certifications"
-              manualMode={false}
-              blurAmount={2}
-              borderColor="hsl(var(--primary))"
-              glowColor="rgba(59, 130, 246, 0.6)"
-              animationDuration={0.6}
-              pauseBetweenAnimations={1.5}
-            />
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/80 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-primary/85 mb-4">
+            <Award className="h-3.5 w-3.5" />
+            Certifications
           </div>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
-            Verified certifications and achievements
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tight max-w-3xl">
+            Credentials &
+            <span className="block text-primary">Continuous Learning</span>
+          </h2>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mt-4 leading-relaxed">
+            Verified certifications that reflect hands-on learning, practical implementation, and consistent upskilling.
           </p>
         </motion.div>
 
@@ -69,7 +64,7 @@ const Certifications = () => {
                   src={cert.image}
                   alt={`${cert.title} certificate`}
                   loading="lazy"
-                  className="w-full h-56 sm:h-60 object-contain bg-white p-2"
+                  className="w-full h-56 sm:h-60 object-cover object-top bg-white"
                 />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-background/80 to-transparent" />
                 {(cert.tag || cert.itemType === "Training") ? (
@@ -126,16 +121,13 @@ const Certifications = () => {
           transition={{ duration: 0.6, delay: 0.45 }}
           className="text-center mt-8"
         >
-          <Button
-            asChild
-            size="lg"
-            className="group/btn bg-primary hover:bg-primary/90 hover:scale-105 transition-all duration-300 shadow-lg font-semibold px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base border border-primary/20 hover:border-primary/40 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto"
+          <Link
+            to="/certifications"
+            className="group inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-primary hover:text-foreground transition-colors duration-300"
           >
-            <Link to="/certifications" className="relative z-10 flex items-center justify-center">
-              <span className="group-hover/btn:text-white transition-colors duration-300">View All Certifications</span>
-              <ArrowRight className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 transition-all duration-300 group-hover/btn:translate-x-2 group-hover/btn:scale-110" />
-            </Link>
-          </Button>
+            <span className="border-b border-primary/45 group-hover:border-foreground/60 pb-0.5">View All Certifications</span>
+            <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
         </motion.div>
       </div>
     </section>

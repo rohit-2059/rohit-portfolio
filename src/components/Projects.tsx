@@ -1,11 +1,9 @@
 import { ExternalLink, Github, ArrowRight } from "lucide-react";
 import { Card, CardContent, CardFooter, CardHeader } from "./ui/card";
-import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import TrueFocus from "./ui/true-focus";
 import TargetCursor from "./ui/target-cursor";
 
 const Projects = () => {
@@ -63,20 +61,18 @@ const Projects = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10 sm:mb-12 md:mb-16"
+          className="mb-10 sm:mb-12 md:mb-16"
         >
-          <div className="mb-4">
-            <TrueFocus 
-              sentence="Featured Projects"
-              blurAmount={2}
-              borderColor="hsl(var(--primary))"
-              glowColor="rgba(59, 130, 246, 0.6)"
-              animationDuration={0.6}
-              pauseBetweenAnimations={1.8}
-            />
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/80 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-primary/85 mb-4">
+            <ExternalLink className="h-3.5 w-3.5" />
+            Featured Projects
           </div>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto px-4">
-            Here are some of my recent projects that showcase my skills and passion for development
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tight max-w-3xl">
+            Let&apos;s Sneak Peek At
+            <span className="block text-primary">What I Have Built</span>
+          </h2>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mt-4 leading-relaxed">
+            A quick look at recent builds that reflect my development approach, problem-solving style, and execution quality.
           </p>
         </motion.div>
 
@@ -95,13 +91,13 @@ const Projects = () => {
               whileHover={{ y: -8, rotateY: 1.5 }}
               className="perspective-1000"
             >
-              <Card className="glass-card border-border/50 hover:border-primary/60 transition-all duration-300 group overflow-hidden h-full shadow-lg hover:shadow-xl hover:shadow-primary/10 bg-background/90 backdrop-blur-xl">
+              <Card className="flex flex-col glass-card border-border/50 hover:border-primary/60 transition-all duration-300 group overflow-hidden h-full shadow-lg hover:shadow-xl hover:shadow-primary/10 bg-background/90 backdrop-blur-xl">
                 <div className="relative border-b border-border/60 bg-white/95">
                   <img
                     src={project.image}
                     alt={`${project.title} preview`}
                     loading="lazy"
-                    className="w-full h-40 sm:h-44 object-contain object-top bg-white"
+                    className="w-full h-40 sm:h-44 object-cover object-top bg-white"
                   />
                 </div>
                 
@@ -114,7 +110,7 @@ const Projects = () => {
                   </motion.h3>
                 </CardHeader>
 
-                <CardContent className="pb-3 sm:pb-4">
+                <CardContent className="pb-3 sm:pb-4 flex-grow">
                   <p className="text-muted-foreground mb-3 leading-relaxed text-xs sm:text-sm line-clamp-3">
                     {project.description}
                   </p>
@@ -148,38 +144,38 @@ const Projects = () => {
                     <Github className="h-3 w-3 sm:h-4 sm:w-4" />
                     <span>Code</span>
                   </a>
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="cursor-target inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 decoration-primary/50 hover:decoration-foreground transition-colors ml-auto"
-                  >
-                    <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4" />
-                    <span>Live</span>
-                  </a>
+                  {project.live && !project.live.includes("github.com") && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cursor-target inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 decoration-primary/50 hover:decoration-foreground transition-colors ml-auto"
+                    >
+                      <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4" />
+                      <span>{project.title.includes("Vaani") ? "APK" : "Live"}</span>
+                    </a>
+                  )}
                 </CardFooter>
               </Card>
             </motion.div>
           ))}
         </div>
 
-        {/* View All Projects Button */}
+        {/* View All Projects CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
           className="text-center"
+          id="view-all-projects"
         >
-          <Button
-            asChild
-            size="lg"
-            className="cursor-target group/btn bg-primary hover:bg-primary/90 hover:scale-105 transition-all duration-300 shadow-lg font-semibold px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base border border-primary/20 hover:border-primary/40 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto"
+          <Link
+            to="/projects"
+            className="cursor-target group inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-primary hover:text-foreground transition-colors duration-300"
           >
-            <Link to="/projects" className="relative z-10 flex items-center justify-center">
-              <span className="group-hover/btn:text-white transition-colors duration-300">View All Projects</span>
-              <ArrowRight className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 transition-all duration-300 group-hover/btn:translate-x-2 group-hover/btn:scale-110" />
-            </Link>
-          </Button>
+            <span className="border-b border-primary/45 group-hover:border-foreground/60 pb-0.5">View All Projects</span>
+            <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
         </motion.div>
       </div>
     </section>

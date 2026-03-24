@@ -45,7 +45,7 @@ const Header = () => {
   // Track active section based on scroll position
   useEffect(() => {
     const updateActiveSection = () => {
-      const sections = ['home', 'about', 'skills', 'certifications', 'projects', 'contact'];
+      const sections = ['home', 'about', 'skills', 'projects', 'achievements', 'certifications', 'contact'];
       const scrollPosition = window.scrollY + 100; // Offset for header height
 
       for (const section of sections) {
@@ -85,14 +85,15 @@ const Header = () => {
     h-12 xs:h-14 sm:h-16 px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-4 transition-all duration-500 ease-in-out`;
 
   let widthClasses = '';
+  const isCompact = isScrolled && !isScrollingUp;
   if (!isScrolled) {
     widthClasses = 'w-[95%] xs:w-[90%] sm:w-[calc(100%-2rem)] sm:max-w-7xl';
   } else if (isScrollingUp) {
     // Scrolled but user scrolling up -> expand (desktop). Mobile stays same size.
     widthClasses = 'w-[95%] xs:w-[90%] sm:w-[calc(100%-2rem)] sm:max-w-7xl';
   } else {
-    // Scrolling down -> compact only on desktop
-    widthClasses = 'w-[95%] xs:w-[90%] sm:w-[85%] md:w-[80%] lg:w-[50%] sm:max-w-3xl';
+    // Scrolling down -> compact with controlled spacing and shorter labels to avoid overlap
+    widthClasses = 'w-[95%] xs:w-[90%] sm:w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] lg:w-[84%] xl:w-[78%] 2xl:w-[68%] sm:max-w-7xl';
   }
 
   return (
@@ -103,88 +104,94 @@ const Header = () => {
         </span>
       </div>
       
-      <nav className="hidden md:flex items-center gap-6">
-        <a href="#home" className={`flex items-center gap-2 text-base font-medium transition-colors relative group ${
+      <nav className={`hidden md:flex items-center justify-center flex-1 min-w-0 px-2 ${isCompact ? 'gap-2 lg:gap-3 text-sm' : 'gap-3 lg:gap-4 xl:gap-6'}`}>
+        <a href="#home" className={`flex items-center gap-2 text-sm lg:text-base font-medium transition-colors relative group ${
           activeSection === 'home' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
         }`}>
-          {activeSection === 'home' && <span className="inline-block w-2 h-2 bg-primary rounded-full" />}
           Home
-          {activeSection !== 'home' && <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />}
+          <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === 'home' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
         </a>
-        <a href="#about" className={`flex items-center gap-2 text-base font-medium transition-colors relative group ${
+        <a href="#about" className={`flex items-center gap-2 text-sm lg:text-base font-medium transition-colors relative group ${
           activeSection === 'about' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
         }`}>
-          {activeSection === 'about' && <span className="inline-block w-2 h-2 bg-primary rounded-full" />}
           About
-          {activeSection !== 'about' && <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />}
+          <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === 'about' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
         </a>
-        <a href="#skills" className={`flex items-center gap-2 text-base font-medium transition-colors relative group ${
+        <a href="#skills" className={`flex items-center gap-2 text-sm lg:text-base font-medium transition-colors relative group ${
           activeSection === 'skills' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
         }`}>
-          {activeSection === 'skills' && <span className="inline-block w-2 h-2 bg-primary rounded-full" />}
           Skills
-          {activeSection !== 'skills' && <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />}
+          <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === 'skills' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
         </a>
-        <a href="#certifications" className={`flex items-center gap-2 text-base font-medium transition-colors relative group ${
-          activeSection === 'certifications' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
-        }`}>
-          {activeSection === 'certifications' && <span className="inline-block w-2 h-2 bg-primary rounded-full" />}
-          Certifications
-          {activeSection !== 'certifications' && <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />}
-        </a>
-        <a href="#projects" className={`flex items-center gap-2 text-base font-medium transition-colors relative group ${
+        <a href="#projects" className={`flex items-center gap-2 text-sm lg:text-base font-medium transition-colors relative group ${
           activeSection === 'projects' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
         }`}>
-          {activeSection === 'projects' && <span className="inline-block w-2 h-2 bg-primary rounded-full" />}
           Projects
-          {activeSection !== 'projects' && <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />}
+          <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === 'projects' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
         </a>
-        <a href="#contact" className={`flex items-center gap-2 text-base font-medium transition-colors relative group ${
+        <a href="#achievements" className={`flex items-center gap-2 text-sm lg:text-base font-medium transition-colors relative group ${
+          activeSection === 'achievements' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
+        }`}>
+          {isCompact ? 'Achv' : 'Achievements'}
+          <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === 'achievements' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+        </a>
+        <a href="#certifications" className={`flex items-center gap-2 text-sm lg:text-base font-medium transition-colors relative group ${
+          activeSection === 'certifications' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
+        }`}>
+          {isCompact ? 'Certs' : 'Certifications'}
+          <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === 'certifications' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+        </a>
+        <a href="#contact" className={`flex items-center gap-2 text-sm lg:text-base font-medium transition-colors relative group ${
           activeSection === 'contact' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
         }`}>
-          {activeSection === 'contact' && <span className="inline-block w-2 h-2 bg-primary rounded-full" />}
           Contact
-          {activeSection !== 'contact' && <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />}
+          <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === 'contact' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
         </a>
       </nav>
 
       {/* Mobile Navigation */}
       <nav className="flex md:hidden items-center gap-1 xs:gap-1.5 flex-1 justify-center max-w-[66%]">
-        <a href="#home" className={`flex items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
+        <a href="#home" className={`relative group flex items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
           activeSection === 'home' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
         }`}>
-          {activeSection === 'home' && <span className="inline-block w-1 h-1 xs:w-1.5 xs:h-1.5 bg-primary rounded-full" />}
           Home
+          <span className={`absolute -bottom-0.5 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === 'home' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
         </a>
-        <a href="#about" className={`flex items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
+        <a href="#about" className={`relative group flex items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
           activeSection === 'about' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
         }`}>
-          {activeSection === 'about' && <span className="inline-block w-1 h-1 xs:w-1.5 xs:h-1.5 bg-primary rounded-full" />}
           About
+          <span className={`absolute -bottom-0.5 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === 'about' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
         </a>
-        <a href="#skills" className={`flex items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
+        <a href="#skills" className={`relative group flex items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
           activeSection === 'skills' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
         }`}>
-          {activeSection === 'skills' && <span className="inline-block w-1 h-1 xs:w-1.5 xs:h-1.5 bg-primary rounded-full" />}
           Skills
+          <span className={`absolute -bottom-0.5 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === 'skills' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
         </a>
-        <a href="#certifications" className={`flex items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
-          activeSection === 'certifications' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
-        }`}>
-          {activeSection === 'certifications' && <span className="inline-block w-1 h-1 xs:w-1.5 xs:h-1.5 bg-primary rounded-full" />}
-          Certs
-        </a>
-        <a href="#projects" className={`flex items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
+        <a href="#projects" className={`relative group flex items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
           activeSection === 'projects' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
         }`}>
-          {activeSection === 'projects' && <span className="inline-block w-1 h-1 xs:w-1.5 xs:h-1.5 bg-primary rounded-full" />}
           Projects
+          <span className={`absolute -bottom-0.5 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === 'projects' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
         </a>
-        <a href="#contact" className={`flex items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
+        <a href="#achievements" className={`relative group flex items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
+          activeSection === 'achievements' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
+        }`}>
+          Achv
+          <span className={`absolute -bottom-0.5 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === 'achievements' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+        </a>
+        <a href="#certifications" className={`relative group flex items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
+          activeSection === 'certifications' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
+        }`}>
+          Certs
+          <span className={`absolute -bottom-0.5 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === 'certifications' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+        </a>
+        <a href="#contact" className={`relative group flex items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
           activeSection === 'contact' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
         }`}>
-          {activeSection === 'contact' && <span className="inline-block w-1 h-1 xs:w-1.5 xs:h-1.5 bg-primary rounded-full" />}
           Contact
+          <span className={`absolute -bottom-0.5 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === 'contact' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
         </a>
       </nav>
       

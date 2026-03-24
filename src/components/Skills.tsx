@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import TrueFocus from "./ui/true-focus";
+import { Sparkles } from "lucide-react";
 
 type Skill = {
   name: string;
@@ -122,21 +122,18 @@ const Skills = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 sm:mb-14 md:mb-20"
+          className="mb-12 sm:mb-14 md:mb-20"
         >
-          <div className="mb-4">
-            <TrueFocus
-              sentence="Core Skills"
-              manualMode={false}
-              blurAmount={2}
-              borderColor="hsl(var(--primary))"
-              glowColor="rgba(59, 130, 246, 0.6)"
-              animationDuration={0.6}
-              pauseBetweenAnimations={1.5}
-            />
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/80 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-primary/85 mb-4">
+            <Sparkles className="h-3.5 w-3.5" />
+            Core Skills
           </div>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto px-4">
-            My core stack grouped by category
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tight max-w-3xl">
+            Core Skills For
+            <span className="block text-primary">What I Can Serve</span>
+          </h2>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mt-4 leading-relaxed">
+            A focused overview of the technologies and capabilities I bring to build reliable, scalable, and user-first products.
           </p>
         </motion.div>
 

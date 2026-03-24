@@ -145,7 +145,8 @@ const AllProjects = () => {
       tags: ["OpenCV", "Python"],
       github: "https://github.com/rohit-2059/Hand-Gesture-Control",
       live: "https://www.linkedin.com/posts/-rohit-khandelwal-_handgesturecontrol-computervision-ai-activity-7279478610300715008-xjPT?utm_source=share&utm_medium=member_desktop&rcm=ACoAAET4zY0BH3OCmih2JNzVDmhWwcUkxqaaIMc",
-      image: "/HandGesture.png",
+      image: "/handges.webp",
+      
     },
     {
       title: "Write the Rights",
@@ -202,16 +203,13 @@ const AllProjects = () => {
             transition={{ duration: 0.5 }}
             className="mb-6 sm:mb-8"
           >
-            <Button
-              asChild
-              variant="outline"
-              className="cursor-target group/btn relative overflow-hidden hover:border-primary hover:bg-primary/5 hover:shadow-lg hover:shadow-primary/20 hover:scale-105 transition-all duration-300 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-primary/10 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 text-sm sm:text-base"
+            <Link
+              to="/#view-all-projects"
+              className="cursor-target group inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-primary hover:text-foreground transition-colors duration-300"
             >
-              <Link to="/" className="relative z-10 flex items-center">
-                <ArrowLeft className="mr-2 h-3 w-3 sm:h-4 sm:w-4 group-hover/btn:scale-110 group-hover/btn:-translate-x-1 transition-all duration-300" />
-                <span className="group-hover/btn:text-primary transition-colors duration-300">Back to Home</span>
-              </Link>
-            </Button>
+              <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-300 group-hover:-translate-x-1" />
+              <span className="border-b border-primary/45 group-hover:border-foreground/60 pb-0.5">Back to Home</span>
+            </Link>
           </motion.div>
 
           {/* Header */}
@@ -252,14 +250,14 @@ const AllProjects = () => {
                 whileHover={{ y: -8, rotateY: 1.5 }}
                 className="perspective-1000"
               >
-                <Card className="glass-card border-border/50 hover:border-primary/60 transition-all duration-300 group overflow-hidden h-full shadow-lg hover:shadow-xl hover:shadow-primary/10 bg-background/90 backdrop-blur-xl">
+                <Card className="flex flex-col glass-card border-border/50 hover:border-primary/60 transition-all duration-300 group overflow-hidden h-full shadow-lg hover:shadow-xl hover:shadow-primary/10 bg-background/90 backdrop-blur-xl">
 
-                  <div className="relative border-b border-border/60 bg-white/95">
+                  <div className="relative border-b border-border/60 bg-white/95 overflow-hidden">
                     <img
                       src={project.image}
                       alt={`${project.title} preview`}
                       loading="lazy"
-                      className="w-full h-40 sm:h-44 object-contain object-top bg-white"
+                      className={`w-full h-40 sm:h-44 object-cover object-top bg-white ${(project as any).imageClassName || ''}`}
                     />
                   </div>
                   
@@ -272,7 +270,7 @@ const AllProjects = () => {
                     </motion.h3>
                   </CardHeader>
 
-                  <CardContent className="pb-3 sm:pb-4">
+                  <CardContent className="pb-3 sm:pb-4 flex-grow">
                     <p className="text-muted-foreground mb-3 leading-relaxed text-xs sm:text-sm line-clamp-3">
                       {project.description}
                     </p>
@@ -306,6 +304,7 @@ const AllProjects = () => {
                       <Github className="h-3 w-3 sm:h-4 sm:w-4" />
                       <span>Code</span>
                     </a>
+                  {project.live && !project.live.includes("github.com") && (
                     <a
                       href={project.live}
                       target="_blank"
@@ -313,8 +312,9 @@ const AllProjects = () => {
                       className="cursor-target inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 decoration-primary/50 hover:decoration-foreground transition-colors ml-auto"
                     >
                       <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4" />
-                      <span>Live</span>
+                      <span>{project.title.includes("Vaani") ? "APK" : "Live"}</span>
                     </a>
+                  )}
                   </CardFooter>
                 </Card>
               </motion.div>
