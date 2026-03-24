@@ -48,7 +48,7 @@ const impactTimeline = [
     disableDetails: true,
     summary: "Track my coding journey across competitive programming and profile platforms.",
     metrics: [
-      { label: "Problems", value: "603+", detail: "Across platforms" },
+      { label: "Problems", value: "600+", detail: "Across platforms" },
       { label: "Current Rating", value: "1562", detail: "LeetCode" },
       { label: "Active Days", value: "318", detail: "Consistency" },
     ],
