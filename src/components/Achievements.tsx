@@ -466,17 +466,18 @@ const Achievements = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[90] bg-black/65 backdrop-blur-md p-4 sm:p-6"
+            className="fixed inset-0 z-[90] overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden bg-black/65 backdrop-blur-md"
             onClick={() => setActiveAchievement(null)}
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.96, y: 20 }}
-              transition={{ duration: 0.25 }}
-              className="max-w-5xl w-full h-[92dvh] sm:h-[90dvh] mx-auto overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden rounded-2xl border border-border/70 bg-background/95 backdrop-blur-xl p-5 sm:p-8 pb-20 sm:pb-24"
-              onClick={(event) => event.stopPropagation()}
-            >
+            <div className="flex min-h-full items-center justify-center p-4 sm:p-6 pb-20 sm:pb-24">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.96, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.96, y: 20 }}
+                transition={{ duration: 0.25 }}
+                className="max-w-5xl w-full h-auto rounded-2xl border border-border/70 bg-background/95 backdrop-blur-xl p-5 sm:p-8 relative"
+                onClick={(event) => event.stopPropagation()}
+              >
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-xs font-mono uppercase tracking-[0.16em] text-primary/90">Achievement Details</p>
@@ -600,7 +601,8 @@ const Achievements = () => {
                   </div>
                 </>
               )}
-            </motion.div>
+              </motion.div>
+            </div>
           </motion.div>
         ) : null}
       </AnimatePresence>

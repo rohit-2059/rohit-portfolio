@@ -44,9 +44,9 @@ const Index = () => {
           <div className="w-full h-full min-h-screen">
             <Lightning 
               hue={219} 
-              xOffset={2.2} 
+              xOffset={2.5} 
               speed={1} 
-              intensity={1} 
+              intensity={1.3} 
               size={0.9} 
             />
           </div>
