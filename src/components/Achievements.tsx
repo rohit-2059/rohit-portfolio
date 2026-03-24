@@ -42,7 +42,7 @@ const impactTimeline = [
 },
   {
     title: "Coding Platforms",
-    organization: "LeetCode, Codolio, Codeforces",
+    organization: "LeetCode, GeeksforGeeks, Codeforces",
     period: "Jun 2025 - Present",
     type: "coding",
     disableDetails: true,
