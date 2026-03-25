@@ -24,7 +24,7 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="font-bold leading-tight px-2 sm:px-0 tracking-tight flex flex-col gap-1 sm:gap-2"
           >
-            <span className="text-3xl sm:text-4xl md:text-5xl text-foreground">Hi, I'm</span>
+            <span className="text-3xl sm:text-4xl md:text-5xl text-foreground">Hi, I am</span>
             <span className="gradient-text text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5rem] pb-2 leading-none">Rohit Khandelwal</span>
           </motion.h1>
           
