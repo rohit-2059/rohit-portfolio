@@ -150,7 +150,7 @@ const Header = () => {
       </nav>
 
       {/* Mobile Navigation */}
-      <nav className="flex md:hidden items-center gap-1 xs:gap-1.5 flex-1 justify-center max-w-[66%]">
+      <nav className="flex md:hidden items-center gap-1 xs:gap-1.5 flex-1 justify-start max-w-[68%] overflow-x-auto whitespace-nowrap [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden px-1">
         <a href="#home" className={`relative group flex items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
           activeSection === 'home' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
         }`}>

@@ -376,7 +376,7 @@ const Achievements = () => {
                         <Icon className={`h-4.5 w-4.5 ${accent.icon}`} />
                       </div>
                       <div className="min-w-0">
-                        <h3 className="text-[1.85rem] sm:text-[2.2rem] font-serif font-bold leading-[1.05] tracking-tight">{item.title}</h3>
+                        <h3 className="text-2xl sm:text-[2.2rem] font-serif font-bold leading-[1.05] tracking-tight">{item.title}</h3>
                         <p className={`mt-2 text-base font-semibold tracking-wide ${accent.org}`}>{item.organization}</p>
                       </div>
                     </div>
@@ -426,7 +426,7 @@ const Achievements = () => {
                         className={`sm:px-4 ${metricIndex === 0 ? 'sm:pl-0' : 'sm:border-l sm:border-border/50'} ${metricIndex === 2 ? 'sm:pr-0' : ''}`}
                       >
                         <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-muted-foreground">{metric.label}</p>
-                        <p className="text-[2.1rem] font-serif font-bold text-foreground mt-2 leading-none">{metric.value}</p>
+                        <p className="text-[1.8rem] sm:text-[2.1rem] font-serif font-bold text-foreground mt-2 leading-none">{metric.value}</p>
                         <p className="text-sm text-muted-foreground mt-1">{metric.detail}</p>
                       </div>
                     ))}
@@ -469,25 +469,25 @@ const Achievements = () => {
             className="fixed inset-0 z-[90] overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden bg-black/65 backdrop-blur-md"
             onClick={() => setActiveAchievement(null)}
           >
-            <div className="flex min-h-full items-center justify-center p-4 sm:p-6 pb-20 sm:pb-24">
+            <div className="flex min-h-full items-start sm:items-center justify-center p-4 sm:p-6 pb-8 sm:pb-24">
               <motion.div
                 initial={{ opacity: 0, scale: 0.96, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.96, y: 20 }}
                 transition={{ duration: 0.25 }}
-                className="max-w-5xl w-full h-auto rounded-2xl border border-border/70 bg-background/95 backdrop-blur-xl p-5 sm:p-8 relative"
+                className="max-w-5xl w-full max-h-[calc(100dvh-2rem)] overflow-y-auto overscroll-contain rounded-2xl border border-border/70 bg-background/95 backdrop-blur-xl p-5 sm:p-8 relative"
                 onClick={(event) => event.stopPropagation()}
               >
-              <div className="flex items-start justify-between gap-4">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                 <div>
                   <p className="text-xs font-mono uppercase tracking-[0.16em] text-primary/90">Achievement Details</p>
-                  <h3 className="mt-2 text-2xl sm:text-4xl font-serif font-bold tracking-tight leading-tight">{activeAchievement.title}</h3>
+                  <h3 className="mt-2 text-2xl sm:text-4xl font-serif font-bold tracking-tight leading-tight break-words">{activeAchievement.title}</h3>
                   <p className="mt-2 text-base sm:text-lg font-semibold text-primary">{activeAchievement.organization}</p>
                 </div>
                 <button
                   type="button"
                   onClick={() => setActiveAchievement(null)}
-                  className="inline-flex items-center justify-center rounded-lg border border-border bg-background p-2 text-muted-foreground hover:text-foreground transition-colors"
+                  className="inline-flex items-center justify-center rounded-lg border border-border bg-background p-2 text-muted-foreground hover:text-foreground transition-colors self-end sm:self-start"
                   aria-label="Close details"
                 >
                   <X className="h-5 w-5" />
@@ -507,7 +507,7 @@ const Achievements = () => {
                         src={activeAchievement.images[0] ?? "/coding.png"}
                         alt="Coding platform snapshot"
                         loading="lazy"
-                        className="h-64 sm:h-80 w-full object-contain object-center"
+                        className="h-52 sm:h-80 w-full object-contain object-center"
                       />
                     </div>
                   </div>
@@ -515,19 +515,19 @@ const Achievements = () => {
                   <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="rounded-xl border border-border/60 bg-card/40 p-4">
                       <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-muted-foreground">Problems Solved</p>
-                      <p className="text-3xl font-serif font-bold mt-2">{isLoadingLeetCode ? "..." : (leetcodeStats?.totalSolved ?? "603+")}</p>
+                        <p className="text-2xl sm:text-3xl font-serif font-bold mt-2">{isLoadingLeetCode ? "..." : (leetcodeStats?.totalSolved ?? "603+")}</p>
                     </div>
                     <div className="rounded-xl border border-border/60 bg-card/40 p-4">
                       <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-muted-foreground">Global Rank</p>
-                      <p className="text-3xl font-serif font-bold mt-2">{isLoadingLeetCode ? "..." : (leetcodeStats?.ranking?.toLocaleString() ?? "-")}</p>
+                        <p className="text-2xl sm:text-3xl font-serif font-bold mt-2">{isLoadingLeetCode ? "..." : (leetcodeStats?.ranking?.toLocaleString() ?? "-")}</p>
                     </div>
                     <div className="rounded-xl border border-border/60 bg-card/40 p-4">
                       <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-muted-foreground">Acceptance Rate</p>
-                      <p className="text-3xl font-serif font-bold mt-2">{isLoadingLeetCode ? "..." : (leetcodeStats?.acceptanceRate ? `${leetcodeStats.acceptanceRate.toFixed(1)}%` : "-")}</p>
+                        <p className="text-2xl sm:text-3xl font-serif font-bold mt-2">{isLoadingLeetCode ? "..." : (leetcodeStats?.acceptanceRate ? `${leetcodeStats.acceptanceRate.toFixed(1)}%` : "-")}</p>
                     </div>
                     <div className="rounded-xl border border-border/60 bg-card/40 p-4">
                       <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-muted-foreground">Contest Rating</p>
-                      <p className="text-3xl font-serif font-bold mt-2">{isLoadingLeetCode ? "..." : (leetcodeStats?.contestRating?.toFixed(0) ?? "-")}</p>
+                        <p className="text-2xl sm:text-3xl font-serif font-bold mt-2">{isLoadingLeetCode ? "..." : (leetcodeStats?.contestRating?.toFixed(0) ?? "-")}</p>
                     </div>
                   </div>
 
@@ -581,7 +581,7 @@ const Achievements = () => {
                             src={image}
                             alt={`${activeAchievement.title} visual ${(imageIndex % activeAchievement.images.length) + 1}`}
                             loading="lazy"
-                            className="w-52 sm:w-64 h-40 sm:h-48 object-contain object-center"
+                            className="w-44 sm:w-64 h-36 sm:h-48 object-contain object-center"
                           />
                         </div>
                       ))}

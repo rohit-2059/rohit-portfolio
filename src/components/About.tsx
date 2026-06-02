@@ -6,7 +6,7 @@ type AboutTab = "who" | "serve" | "think" | "genre";
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeTab, setActiveTab] = useState<AboutTab | null>(null);
+  const [activeTab, setActiveTab] = useState<AboutTab | null>("who");
   const sectionRef = useRef<HTMLElement>(null);
 
   const aboutContent: Record<AboutTab, { title: string; description: string; points: string[] }> = {
@@ -104,7 +104,7 @@ const About = () => {
                 key={key}
                 type="button"
                 onClick={() => setActiveTab(key as AboutTab)}
-                className="flex items-center gap-4 w-full group text-left outline-none"
+                className="flex items-start gap-3 sm:gap-4 w-full group text-left outline-none"
               >
                 {/* The Line */}
                 <div 
@@ -112,7 +112,7 @@ const About = () => {
                 ></div>
                 {/* The Text */}
                 <span 
-                  className={`text-base sm:text-lg font-semibold transition-colors ${activeTab === key ? "text-primary" : "text-muted-foreground group-hover:text-foreground"}`}
+                  className={`text-sm sm:text-lg font-semibold leading-snug transition-colors ${activeTab === key ? "text-primary" : "text-muted-foreground group-hover:text-foreground"}`}
                 >
                   {content.title}
                 </span>

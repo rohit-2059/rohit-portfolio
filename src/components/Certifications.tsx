@@ -57,14 +57,14 @@ const Certifications = () => {
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.15 + index * 0.1 }}
               whileHover={{ y: -4 }}
-              className="relative max-w-sm w-full h-full min-h-[30rem] mx-auto overflow-hidden rounded-xl border border-border bg-background flex flex-col"
+              className="relative max-w-sm w-full h-full min-h-[26rem] sm:min-h-[30rem] mx-auto overflow-hidden rounded-xl border border-border bg-background flex flex-col"
             >
               <div className="relative">
                 <img
                   src={cert.image}
                   alt={`${cert.title} certificate`}
                   loading="lazy"
-                  className="w-full h-56 sm:h-60 object-cover object-top bg-white"
+                  className="w-full h-48 sm:h-60 object-cover object-top bg-white"
                 />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-background/80 to-transparent" />
                 {(cert.tag || cert.itemType === "Training") ? (
@@ -99,12 +99,12 @@ const Certifications = () => {
                       ))}
                   </div>
                 </div>
-                <div className="flex items-end justify-between text-sm pt-4">
+                <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 text-sm pt-4">
                   <a
                     href={cert.verifyUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center justify-center rounded-none border-b border-primary/45 bg-transparent px-0 py-1 text-xs sm:text-sm font-medium text-primary hover:text-foreground hover:border-foreground/60 transition-colors"
+                    className="inline-flex items-center justify-center rounded-none border-b border-primary/45 bg-transparent px-0 py-1 text-xs sm:text-sm font-medium text-primary hover:text-foreground hover:border-foreground/60 transition-colors self-start"
                   >
                     View Certificate
                   </a>

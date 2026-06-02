@@ -151,7 +151,7 @@ const Skills = () => {
                 <h3 className="text-base sm:text-lg font-semibold tracking-wide text-center text-foreground/95">{category.title}</h3>
                 <span className="h-px w-8 bg-primary/40" />
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-8 sm:gap-x-10 gap-y-8 sm:gap-y-10 place-items-center max-w-xl mx-auto">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-4 sm:gap-x-10 gap-y-6 sm:gap-y-10 place-items-center w-full max-w-xl mx-auto">
                 {category.skills.map((skill, skillIndex) => (
                   <motion.div
                     key={skill.name}
@@ -159,7 +159,7 @@ const Skills = () => {
                     animate={isVisible ? { opacity: 1, scale: 1 } : {}}
                     transition={{ duration: 0.35, delay: categoryIndex * 0.08 + skillIndex * 0.03 }}
                     whileHover={{ y: -6, scale: 1.06 }}
-                    className="group flex flex-col items-center justify-start gap-2 min-h-[78px]"
+                    className="group flex flex-col items-center justify-start gap-2 min-h-[72px]"
                     title={skill.name}
                   >
                     {skill.logo && !failedLogos[skill.name] ? (
