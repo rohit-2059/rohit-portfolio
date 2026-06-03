@@ -35,7 +35,7 @@ const Index = () => {
 
   return (
     <SmoothScroll>
-      <div className="relative min-h-screen overflow-x-hidden">
+      <div className="relative min-h-screen">
         {/* Black Background - Behind everything */}
         <div className="fixed inset-0 bg-black w-full h-full min-h-screen" style={{ zIndex: -20 }}></div>
         
@@ -57,18 +57,18 @@ const Index = () => {
         
         {/* Content Layer */}
         <div className="relative bg-transparent min-h-screen" style={{ zIndex: 10 }}>
-          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-stretch relative w-full">
+          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row relative w-full">
             {/* Left Column (Hero & About) */}
-            <div className="w-full lg:w-[70%] order-2 lg:order-1 min-w-0">
+            <div className="w-full lg:w-[70%] order-2 lg:order-1">
               <Hero />
               <About />
             </div>
 
             {/* Right Column (Sticky Image) */}
-            <div className="flex w-full lg:w-[30%] lg:sticky lg:top-0 lg:h-screen items-center justify-center pt-6 sm:pt-8 lg:pt-16 order-1 lg:order-2 mb-6 lg:mb-0 px-4 sm:px-6 lg:px-0">
+            <div className="flex lg:w-[30%] lg:sticky top-0 lg:h-screen items-center justify-center pt-12 lg:pt-16 order-1 lg:order-2 mb-8 lg:mb-0">
               <div className="relative">
                 <motion.div
-                  className="w-44 h-44 sm:w-56 sm:h-56 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl"
+                  className="w-48 h-48 sm:w-60 sm:h-60 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 >

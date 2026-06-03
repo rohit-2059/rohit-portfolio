@@ -150,44 +150,44 @@ const Header = () => {
       </nav>
 
       {/* Mobile Navigation */}
-      <nav className="flex md:hidden items-center gap-1 xs:gap-1.5 flex-1 justify-start max-w-[68%] overflow-x-auto whitespace-nowrap [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden px-1">
-        <a href="#home" className={`relative group flex items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
+      <nav className="flex md:hidden items-center gap-1 xs:gap-1.5 flex-1 min-w-0 justify-start overflow-x-auto whitespace-nowrap px-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <a href="#home" className={`relative group flex shrink-0 items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
           activeSection === 'home' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
         }`}>
           Home
           <span className={`absolute -bottom-0.5 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === 'home' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
         </a>
-        <a href="#about" className={`relative group flex items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
+        <a href="#about" className={`relative group flex shrink-0 items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
           activeSection === 'about' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
         }`}>
           About
           <span className={`absolute -bottom-0.5 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === 'about' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
         </a>
-        <a href="#skills" className={`relative group flex items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
+        <a href="#skills" className={`relative group flex shrink-0 items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
           activeSection === 'skills' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
         }`}>
           Skills
           <span className={`absolute -bottom-0.5 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === 'skills' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
         </a>
-        <a href="#projects" className={`relative group flex items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
+        <a href="#projects" className={`relative group flex shrink-0 items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
           activeSection === 'projects' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
         }`}>
           Projects
           <span className={`absolute -bottom-0.5 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === 'projects' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
         </a>
-        <a href="#achievements" className={`relative group flex items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
+        <a href="#achievements" className={`relative group flex shrink-0 items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
           activeSection === 'achievements' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
         }`}>
           Achv
           <span className={`absolute -bottom-0.5 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === 'achievements' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
         </a>
-        <a href="#certifications" className={`relative group flex items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
+        <a href="#certifications" className={`relative group flex shrink-0 items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
           activeSection === 'certifications' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
         }`}>
           Certs
           <span className={`absolute -bottom-0.5 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === 'certifications' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
         </a>
-        <a href="#contact" className={`relative group flex items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
+        <a href="#contact" className={`relative group flex shrink-0 items-center gap-0.5 xs:gap-1 transition-colors text-[10px] xs:text-xs px-0.5 xs:px-1 py-1 ${
           activeSection === 'contact' ? 'text-foreground/90' : 'text-muted-foreground hover:text-foreground'
         }`}>
           Contact

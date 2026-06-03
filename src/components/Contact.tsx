@@ -279,7 +279,7 @@ const Contact = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isVisible ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.7 }}
-                className="flex gap-4 sm:gap-6 pt-6 sm:pt-8"
+                className="flex flex-wrap gap-4 sm:gap-6 pt-6 sm:pt-8"
               >
                 {socialLinks.map((social, index) => (
                   <motion.a

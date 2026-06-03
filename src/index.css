@@ -56,7 +56,6 @@ All colors MUST be HSL.
 @layer base {
   * {
     @apply border-border;
-    box-sizing: border-box;
   }
   
   html {
@@ -64,21 +63,17 @@ All colors MUST be HSL.
     margin: 0;
     padding: 0;
     background-color: hsl(220 40% 4%); /* Ensure HTML background is dark */
-    height: 100%;
-    overflow-x: hidden;
+    min-height: 100%;
   }
 
   body {
     @apply bg-background text-foreground;
     margin: 0;
     padding: 0;
-    overflow-y: auto;
     overflow-x: hidden;
-    overscroll-behavior-x: none;
     background-color: hsl(220 40% 4%); /* Fallback background color */
     min-height: 100vh;
     min-height: 100dvh; /* Dynamic viewport height for mobile */
-    height: 100%;
   }
   
   #root {
@@ -86,26 +81,6 @@ All colors MUST be HSL.
     min-height: 100vh;
     min-height: 100dvh; /* Dynamic viewport height for mobile */
     width: 100%;
-    height: 100%;
-  }
-
-  img,
-  video,
-  svg {
-    display: block;
-    max-width: 100%;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  li,
-  a {
-    overflow-wrap: anywhere;
   }
 }
 
@@ -127,12 +102,6 @@ All colors MUST be HSL.
   
   .animate-float {
     animation-duration: 8s; /* Slower animation on mobile */
-  }
-
-  .animate-fade-in-up,
-  .animate-float,
-  .gradient-text {
-    animation-duration: 8s;
   }
   
   /* Reduce motion for better performance */

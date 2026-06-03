@@ -193,7 +193,7 @@ const AllProjects = () => {
       </div>
       
       {/* Content Layer */}
-      <div className="relative bg-transparent min-h-screen overflow-x-hidden" style={{ zIndex: 10 }}>
+      <div className="relative bg-transparent min-h-screen" style={{ zIndex: 10 }}>
         <section ref={sectionRef} className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           {/* Back Button */}
@@ -250,20 +250,20 @@ const AllProjects = () => {
                 whileHover={{ y: -8, rotateY: 1.5 }}
                 className="perspective-1000"
               >
-                <Card className="flex min-w-0 flex-col glass-card border-border/50 hover:border-primary/60 transition-all duration-300 group overflow-hidden h-full shadow-lg hover:shadow-xl hover:shadow-primary/10 bg-background/90 backdrop-blur-xl">
+                <Card className="flex flex-col glass-card border-border/50 hover:border-primary/60 transition-all duration-300 group overflow-hidden h-full shadow-lg hover:shadow-xl hover:shadow-primary/10 bg-background/90 backdrop-blur-xl">
 
                   <div className="relative border-b border-border/60 bg-white/95 overflow-hidden">
                     <img
                       src={project.image}
                       alt={`${project.title} preview`}
                       loading="lazy"
-                      className={`w-full h-36 sm:h-44 object-cover object-top bg-white ${(project as any).imageClassName || ''}`}
+                      className={`w-full h-40 sm:h-44 object-cover object-top bg-white ${(project as any).imageClassName || ''}`}
                     />
                   </div>
                   
                   <CardHeader className="pb-2 sm:pb-3">
                     <motion.h3 
-                      className="text-base sm:text-lg font-bold group-hover:text-primary transition-all duration-300 line-clamp-2 break-words"
+                      className="text-base sm:text-lg font-bold group-hover:text-primary transition-all duration-300 line-clamp-2"
                       whileHover={{ scale: 1.02 }}
                     >
                       {project.title}
@@ -294,12 +294,12 @@ const AllProjects = () => {
                     </div>
                   </CardContent>
 
-                  <CardFooter className="pt-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
+                  <CardFooter className="pt-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="cursor-target inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 decoration-primary/50 hover:decoration-foreground transition-colors min-w-0"
+                      className="cursor-target inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 decoration-primary/50 hover:decoration-foreground transition-colors"
                     >
                       <Github className="h-3 w-3 sm:h-4 sm:w-4" />
                       <span>Code</span>

@@ -64,7 +64,7 @@ const Certifications = () => {
                   src={cert.image}
                   alt={`${cert.title} certificate`}
                   loading="lazy"
-                  className="w-full h-48 sm:h-60 object-cover object-top bg-white"
+                  className="w-full h-56 sm:h-60 object-cover object-top bg-white"
                 />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-background/80 to-transparent" />
                 {(cert.tag || cert.itemType === "Training") ? (
@@ -104,7 +104,7 @@ const Certifications = () => {
                     href={cert.verifyUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center justify-center rounded-none border-b border-primary/45 bg-transparent px-0 py-1 text-xs sm:text-sm font-medium text-primary hover:text-foreground hover:border-foreground/60 transition-colors self-start"
+                    className="inline-flex items-center justify-center rounded-none border-b border-primary/45 bg-transparent px-0 py-1 text-xs sm:text-sm font-medium text-primary hover:text-foreground hover:border-foreground/60 transition-colors"
                   >
                     View Certificate
                   </a>

@@ -43,7 +43,7 @@ const AllCertifications = () => {
         </div>
       </div>
 
-      <div className="relative bg-transparent min-h-screen overflow-x-hidden" style={{ zIndex: 10 }}>
+      <div className="relative bg-transparent min-h-screen" style={{ zIndex: 10 }}>
         <section ref={sectionRef} className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
           <div className="max-w-7xl mx-auto">
             <motion.div
@@ -101,7 +101,7 @@ const AllCertifications = () => {
                       src={cert.image}
                       alt={`${cert.title} certificate`}
                       loading="lazy"
-                      className="w-full h-48 sm:h-60 object-contain bg-white p-2"
+                      className="w-full h-48 sm:h-56 md:h-60 object-contain bg-white p-2"
                     />
                     <div className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-background/80 to-transparent" />
                     {(cert.tag || cert.itemType === "Training") ? (
@@ -144,7 +144,7 @@ const AllCertifications = () => {
                         href={cert.verifyUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="cursor-target inline-flex items-center justify-center rounded-none border-b border-primary/45 bg-transparent px-0 py-1 text-xs sm:text-sm font-medium text-primary hover:text-foreground hover:border-foreground/60 transition-colors self-start"
+                        className="cursor-target inline-flex items-center justify-center rounded-none border-b border-primary/45 bg-transparent px-0 py-1 text-xs sm:text-sm font-medium text-primary hover:text-foreground hover:border-foreground/60 transition-colors"
                       >
                         View Certificate
                       </a>
